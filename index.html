@@ -8,345 +8,339 @@
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
   :root {
-    --bg: #070a14;
-    --bg2: #0d1120;
-    --card-bg: #131829;
-    --card-border: rgba(255,255,255,0.10);
-    --purple: #8B5CF6;
+    --bg: #ffffff;
+    --bg-card: #f7f8fa;
+    --border: #e5e7eb;
+    --text: #111827;
+    --text-2: #6b7280;
+    --text-3: #9ca3af;
+    --accent: #7c3aed;
+    --accent-light: #a78bfa;
+    --accent-bg: #f5f3ff;
+    --purple: #7c3aed;
     --pink: #ec4899;
-    --blue: #3b82f6;
-    --cyan: #06b6d4;
-    --green: #10b981;
-    --orange: #f59e0b;
-    --text: #f1f5f9;
-    --text-muted: #8892a4;
-    --radius: 16px;
-    --radius-sm: 10px;
+    --blue: #2563eb;
+    --cyan: #0891b2;
+    --green: #059669;
+    --orange: #d97706;
+    --red: #dc2626;
+    --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+    --shadow-lg: 0 10px 30px rgba(0,0,0,0.10);
+    --radius: 14px;
+    --radius-sm: 8px;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: 'Inter', -apple-system, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background: var(--bg);
     color: var(--text);
     min-height: 100vh;
     line-height: 1.6;
-    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
   }
 
-  /* 动态背景 */
-  .bg-grid {
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(139,92,246,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(139,92,246,0.03) 1px, transparent 1px);
-    background-size: 60px 60px;
-    z-index: 0;
-    pointer-events: none;
+  /* 导航栏 */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
-  .orb {
-    position: fixed;
-    border-radius: 50%;
-    filter: blur(80px);
-    pointer-events: none;
-    z-index: 0;
-    animation: float 8s ease-in-out infinite;
-  }
-  .orb-1 {
-    width: 400px; height: 400px;
-    background: rgba(139,92,246,0.12);
-    top: -100px; left: -100px;
-    animation-delay: 0s;
-  }
-  .orb-2 {
-    width: 350px; height: 350px;
-    background: rgba(236,72,153,0.10);
-    bottom: -80px; right: -80px;
-    animation-delay: -3s;
-  }
-  .orb-3 {
-    width: 250px; height: 250px;
-    background: rgba(59,130,246,0.10);
-    top: 40%; left: 60%;
-    animation-delay: -5s;
+  .topbar-logo {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
-  @keyframes float {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(20px, -20px) scale(1.05); }
-    66% { transform: translate(-10px, 10px) scale(0.95); }
+  .topbar-logo .logo-icon {
+    width: 28px; height: 28px;
+    background: linear-gradient(135deg, #7c3aed, #ec4899);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+  }
+
+  .topbar-links {
+    display: flex; gap: 6px;
+  }
+
+  .topbar-links a {
+    display: flex; align-items: center; gap: 5px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--text-2);
+    transition: all 0.15s;
+  }
+
+  .topbar-links a:hover {
+    background: var(--bg-card);
+    color: var(--text);
   }
 
   .container {
-    max-width: 960px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 40px 20px 60px;
-    position: relative;
-    z-index: 1;
+    padding: 0 20px 60px;
   }
 
   /* Hero */
   .hero {
     text-align: center;
-    padding: 60px 0 50px;
+    padding: 64px 0 48px;
   }
 
-  /* 顶部标签 */
   .hero-badge {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 6px 14px;
-    background: rgba(139,92,246,0.15);
-    border: 1px solid rgba(139,92,246,0.3);
+    padding: 5px 12px;
+    background: var(--accent-bg);
+    border: 1px solid rgba(124,58,237,0.15);
     border-radius: 100px;
     font-size: 12px;
-    font-weight: 500;
-    color: #a78bfa;
-    margin-bottom: 20px;
-  }
-  .hero-badge .dot {
-    width: 6px; height: 6px;
-    background: var(--purple);
-    border-radius: 50%;
-    animation: pulse 2s ease-in-out infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-  }
-
-  .avatar {
-    width: 88px; height: 88px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #8B5CF6, #ec4899, #3b82f6);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 32px; font-weight: 700;
-    margin: 0 auto 16px;
-    box-shadow: 0 0 0 4px rgba(139,92,246,0.2), 0 0 40px rgba(139,92,246,0.4);
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 24px;
+    letter-spacing: 0.02em;
   }
 
   .hero h1 {
-    font-size: 36px; font-weight: 800; margin-bottom: 8px;
-    background: linear-gradient(135deg, #f1f5f9 0%, #a78bfa 50%, #ec4899 100%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    font-size: 44px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    margin-bottom: 12px;
+    line-height: 1.15;
+  }
+
+  .hero h1 span {
+    background: linear-gradient(135deg, #7c3aed, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     background-clip: text;
-    letter-spacing: -0.02em;
   }
 
   .hero p {
-    color: var(--text-muted); font-size: 16px; margin-bottom: 20px;
+    font-size: 18px;
+    color: var(--text-2);
+    max-width: 480px;
+    margin: 0 auto 28px;
+    line-height: 1.6;
   }
 
-  /* 统计条 */
-  .stats-bar {
-    display: flex; justify-content: center; gap: 32px;
-    margin-bottom: 24px; flex-wrap: wrap;
-  }
-  .stat {
-    text-align: center;
-  }
-  .stat-num {
-    font-size: 22px; font-weight: 700;
-    background: linear-gradient(135deg, #8B5CF6, #06b6d4);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .stat-label {
-    font-size: 11px; color: var(--text-muted);
-    text-transform: uppercase; letter-spacing: 0.08em;
-  }
-
-  .social-links {
+  .hero-social {
     display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
   }
 
-  .social-links a {
-    display: flex; align-items: center; gap: 6px;
-    padding: 8px 16px;
-    background: var(--card-bg); border: 1px solid var(--card-border);
-    border-radius: 100px; color: var(--text);
-    text-decoration: none; font-size: 13px; font-weight: 500;
-    transition: all 0.2s;
+  .hero-social a {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 9px 18px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 13px; font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    transition: all 0.15s;
   }
 
-  .social-links a:hover {
-    background: rgba(139,92,246,0.15);
-    border-color: rgba(139,92,246,0.5);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(139,92,246,0.2);
+  .hero-social a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+  }
+
+  /* 统计 */
+  .stats {
+    display: flex; justify-content: center; gap: 40px;
+    margin-top: 40px; padding-top: 40px;
+    border-top: 1px solid var(--border);
+  }
+
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-size: 26px; font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+  .stat-label {
+    font-size: 12px; color: var(--text-3);
+    margin-top: 2px;
   }
 
   /* 分类标题 */
   .section-title {
     display: flex; align-items: center; gap: 10px;
-    margin: 44px 0 18px; padding-left: 4px;
-    font-size: 13px; font-weight: 600;
-    text-transform: uppercase; letter-spacing: 0.1em;
-    color: var(--text-muted);
+    margin: 52px 0 18px;
+    padding-top: 8px;
   }
 
   .section-title .emoji {
-    font-size: 16px;
+    font-size: 18px;
+  }
+
+  .section-title .label {
+    font-size: 13px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--text-2);
+  }
+
+  .section-title .count {
+    font-size: 11px; font-weight: 600;
+    padding: 2px 8px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    color: var(--text-3);
+    margin-left: 4px;
   }
 
   .section-title::after {
     content: ''; flex: 1; height: 1px;
-    background: linear-gradient(to right, var(--card-border), transparent);
+    background: var(--border);
+    margin-left: 12px;
   }
 
-  /* 工具卡片网格 */
+  /* 工具卡片 */
   .tool-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
   }
 
   .tool-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
     border-radius: var(--radius);
-    padding: 16px;
     text-decoration: none;
     color: var(--text);
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
+    transition: all 0.18s;
+    cursor: pointer;
   }
 
-  .tool-card:hover { transform: translateY(-4px); }
-
-  /* 每个分类默认边框色 */
-  .tool-card.chat { border-color: rgba(139,92,246,0.20); }
-  .tool-card.coding { border-color: rgba(59,130,246,0.20); }
-  .tool-card.video { border-color: rgba(236,72,153,0.20); }
-  .tool-card.image { border-color: rgba(245,158,11,0.20); }
-  .tool-card.loop { border-color: rgba(6,182,212,0.20); }
-  .tool-card.write { border-color: rgba(16,185,129,0.20); }
-
-  /* AI对话助手 - 紫色系 */
-  .tool-card.chat:hover {
-    border-color: #8B5CF6;
-    box-shadow: 0 20px 40px rgba(139,92,246,0.25), 0 0 0 1px rgba(139,92,246,0.3);
+  .tool-card:hover {
+    box-shadow: var(--shadow-md);
+    border-color: #d1d5db;
+    transform: translateY(-2px);
   }
-  .tool-card.chat:hover .tool-icon.chat { background: rgba(139,92,246,0.35); }
 
-  /* 网站构建 - 蓝色系 */
-  .tool-card.coding:hover {
-    border-color: #3b82f6;
-    box-shadow: 0 20px 40px rgba(59,130,246,0.25), 0 0 0 1px rgba(59,130,246,0.3);
+  .tool-card:active {
+    transform: translateY(0);
   }
-  .tool-card.coding:hover .tool-icon.coding { background: rgba(59,130,246,0.35); }
 
-  /* AI视频 - 粉色系 */
-  .tool-card.video:hover {
-    border-color: #ec4899;
-    box-shadow: 0 20px 40px rgba(236,72,153,0.25), 0 0 0 1px rgba(236,72,153,0.3);
-  }
-  .tool-card.video:hover .tool-icon.video { background: rgba(236,72,153,0.35); }
-
-  /* AI图片 - 橙色系 */
-  .tool-card.image:hover {
-    border-color: #f59e0b;
-    box-shadow: 0 20px 40px rgba(245,158,11,0.25), 0 0 0 1px rgba(245,158,11,0.3);
-  }
-  .tool-card.image:hover .tool-icon.image { background: rgba(245,158,11,0.35); }
-
-  /* AI效率 - 青色系 */
-  .tool-card.loop:hover {
-    border-color: #06b6d4;
-    box-shadow: 0 20px 40px rgba(6,182,212,0.25), 0 0 0 1px rgba(6,182,212,0.3);
-  }
-  .tool-card.loop:hover .tool-icon.loop { background: rgba(6,182,212,0.35); }
-
-  /* AI写作 - 绿色系 */
-  .tool-card.write:hover {
-    border-color: #10b981;
-    box-shadow: 0 20px 40px rgba(16,185,129,0.25), 0 0 0 1px rgba(16,185,129,0.3);
-  }
-  .tool-card.write:hover .tool-icon.write { background: rgba(16,185,129,0.35); }
-
+  /* 分类图标颜色 */
   .tool-icon {
-    width: 38px; height: 38px; border-radius: 10px;
+    width: 36px; height: 36px; flex-shrink: 0;
+    border-radius: 9px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 18px; margin-bottom: 12px;
-    transition: transform 0.2s;
+    font-size: 16px;
   }
-  .tool-card:hover .tool-icon { transform: scale(1.1); }
 
-  .tool-icon.chat { background: rgba(139,92,246,0.25); color: #c4b5fd; }
-  .tool-icon.video { background: rgba(236,72,153,0.25); color: #f9a8d4; }
-  .tool-icon.image { background: rgba(245,158,11,0.25); color: #fcd34d; }
-  .tool-icon.write { background: rgba(16,185,129,0.25); color: #6ee7b7; }
-  .tool-icon.loop { background: rgba(6,182,212,0.25); color: #67e8f9; }
-  .tool-icon.coding { background: rgba(59,130,246,0.25); color: #93c5fd; }
+  .icon-chat { background: rgba(124,58,237,0.10); }
+  .icon-coding { background: rgba(37,99,235,0.10); }
+  .icon-video { background: rgba(236,72,153,0.10); }
+  .icon-image { background: rgba(217,119,6,0.10); }
+  .icon-loop { background: rgba(8,145,178,0.10); }
+  .icon-write { background: rgba(5,150,105,0.10); }
+
+  .tool-content { flex: 1; min-width: 0; }
 
   .tool-name {
-    font-weight: 600; font-size: 14px; margin-bottom: 6px;
-    color: #e2e8f0;
+    font-size: 13px; font-weight: 600;
+    color: var(--text);
+    margin-bottom: 3px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
 
   .tool-desc {
-    font-size: 12px; color: var(--text-muted); line-height: 1.5;
-  }
-
-  /* CTA */
-  .cta {
-    text-align: center;
-    margin-top: 56px;
-    padding: 36px 30px;
-    background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(236,72,153,0.08));
-    border: 1px solid rgba(139,92,246,0.2);
-    border-radius: 20px;
-    position: relative;
+    font-size: 11px; color: var(--text-3);
+    line-height: 1.45;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
     overflow: hidden;
   }
 
-  .cta::before {
-    content: '';
-    position: absolute;
-    top: -50%; left: -50%;
-    width: 200%; height: 200%;
-    background: radial-gradient(ellipse at center, rgba(139,92,246,0.08) 0%, transparent 60%);
-    pointer-events: none;
+  /* CTA */
+  .cta-section {
+    text-align: center;
+    margin-top: 60px;
+    padding: 40px;
+    background: linear-gradient(135deg, #f5f3ff 0%, #fdf2f8 100%);
+    border: 1px solid rgba(124,58,237,0.12);
+    border-radius: 20px;
   }
 
-  .cta p {
-    font-size: 15px; color: var(--text-muted); margin-bottom: 16px;
+  .cta-section p {
+    font-size: 16px; color: var(--text-2);
+    margin-bottom: 16px;
   }
 
-  .cta a {
+  .cta-btn {
     display: inline-flex; align-items: center; gap: 8px;
-    padding: 13px 30px;
-    background: linear-gradient(135deg, #8B5CF6, #7c3aed);
-    border-radius: 100px;
-    color: #fff; text-decoration: none; font-weight: 600; font-size: 14px;
-    transition: all 0.2s;
-    box-shadow: 0 4px 20px rgba(139,92,246,0.4);
+    padding: 12px 28px;
+    background: linear-gradient(135deg, #7c3aed, #6d28d9);
+    border-radius: 10px;
+    color: #fff; text-decoration: none;
+    font-weight: 600; font-size: 14px;
+    box-shadow: 0 4px 14px rgba(124,58,237,0.35);
+    transition: all 0.15s;
   }
 
-  .cta a:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 30px rgba(139,92,246,0.5);
+  .cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(124,58,237,0.45);
   }
 
+  /* footer */
   footer {
-    text-align: center; padding: 30px;
-    color: var(--text-muted); font-size: 12px;
-    border-top: 1px solid var(--card-border);
+    text-align: center;
+    padding: 32px 20px;
+    border-top: 1px solid var(--border);
     margin-top: 40px;
+    color: var(--text-3);
+    font-size: 12px;
   }
 
-  footer a { color: var(--purple); text-decoration: none; }
+  footer a { color: var(--accent); text-decoration: none; }
+
+  /* 分类hover高亮 */
+  .tool-card:hover .icon-chat { background: rgba(124,58,237,0.18); }
+  .tool-card:hover .icon-coding { background: rgba(37,99,235,0.18); }
+  .tool-card:hover .icon-video { background: rgba(236,72,153,0.18); }
+  .tool-card:hover .icon-image { background: rgba(217,119,6,0.18); }
+  .tool-card:hover .icon-loop { background: rgba(8,145,178,0.18); }
+  .tool-card:hover .icon-write { background: rgba(5,150,105,0.18); }
 
   @media (max-width: 600px) {
+    .hero h1 { font-size: 32px; }
+    .hero p { font-size: 16px; }
+    .stats { gap: 24px; }
     .tool-grid { grid-template-columns: 1fr 1fr; }
-    .hero { padding: 40px 0 35px; }
-    .hero h1 { font-size: 28px; }
-    .stats-bar { gap: 20px; }
+    .topbar-links { display: none; }
   }
 
   @media (max-width: 380px) {
@@ -356,248 +350,344 @@
 </head>
 <body>
 
-<div class="bg-grid"></div>
-<div class="orb orb-1"></div>
-<div class="orb orb-2"></div>
-<div class="orb orb-3"></div>
+<!-- 导航栏 -->
+<header class="topbar">
+  <div class="topbar-logo">
+    <div class="logo-icon">🧠</div>
+    AI工具箱
+  </div>
+  <nav class="topbar-links">
+    <a href="https://xhslink.com/m/15zyxo67w0J" target="_blank">📕 小某书</a>
+    <a href="https://v.douyin.com/jUdv0B2yNdw/" target="_blank">🎵 某音</a>
+    <a href="https://github.com/zhangxin2023" target="_blank">⚡ GitHub</a>
+    <a href="weixin://dl/chat/qingxi20250501">💬 联系我</a>
+  </nav>
+</header>
 
 <div class="container">
 
   <!-- Hero -->
   <section class="hero">
-    <div class="hero-badge">
-      <span class="dot"></span>
-      已收录 35+ 热门AI工具
-    </div>
-    <div class="avatar">溪</div>
-    <h1>清溪的AI工具箱</h1>
+    <div class="hero-badge">✦ 已收录 30+ 热门AI工具</div>
+    <h1>清溪的<span>AI工具箱</span></h1>
     <p>整理全网最实用的 AI 工具，按场景分类，开箱即用</p>
+    <div class="hero-social">
+      <a href="https://xhslink.com/m/15zyxo67w0J" target="_blank">📕 小某书</a>
+      <a href="https://v.douyin.com/jUdv0B2yNdw/" target="_blank">🎵 某音</a>
+      <a href="https://github.com/zhangxin2023" target="_blank">⚡ GitHub</a>
+      <a href="weixin://dl/chat/qingxi20250501">💬 联系我</a>
+    </div>
 
-    <div class="stats-bar">
-      <div class="stat">
-        <div class="stat-num">35+</div>
+    <div class="stats">
+      <div class="stat-item">
+        <div class="stat-num">30+</div>
         <div class="stat-label">收录工具</div>
       </div>
-      <div class="stat">
+      <div class="stat-item">
         <div class="stat-num">6</div>
         <div class="stat-label">分类场景</div>
       </div>
-      <div class="stat">
+      <div class="stat-item">
         <div class="stat-num">免费</div>
         <div class="stat-label">全部可用</div>
       </div>
     </div>
-
-    <div class="social-links">
-      <a href="https://xhslink.com/m/15zyxo67w0J" target="_blank">📕 小某书</a>
-      <a href="https://v.douyin.com/jUdv0B2yNdw/" target="_blank">🎵 某音</a>
-      <a href="https://github.com/zhangxin2023" target="_blank">⚡ GitHub</a>
-      <a href="weixin://dl/chat/qingxi20250501">💬 联系方式</a>
-    </div>
   </section>
 
-  <!-- AI对话/助手 -->
-  <div class="section-title"><span class="emoji">🤖</span> AI对话助手</div>
+  <!-- AI对话助手 -->
+  <div class="section-title">
+    <span class="emoji">🤖</span>
+    <span class="label">AI对话助手</span>
+    <span class="count">6个</span>
+  </div>
   <div class="tool-grid">
-    <a class="tool-card chat" href="https://chat.openai.com" target="_blank">
-      <div class="tool-icon chat">🤖</div>
-      <div class="tool-name">ChatGPT</div>
-      <div class="tool-desc">OpenAI出品，全球最流行AI对话工具，支持多模态</div>
+    <a class="tool-card" href="https://chat.openai.com" target="_blank">
+      <div class="tool-icon icon-chat">🤖</div>
+      <div class="tool-content">
+        <div class="tool-name">ChatGPT</div>
+        <div class="tool-desc">OpenAI出品，全球最流行AI对话工具，支持多模态</div>
+      </div>
     </a>
-    <a class="tool-card chat" href="https://claude.ai" target="_blank">
-      <div class="tool-icon chat">🧠</div>
-      <div class="tool-name">Claude</div>
-      <div class="tool-desc">Anthropic出品，长文本理解强，适合写作和深度分析</div>
+    <a class="tool-card" href="https://claude.ai" target="_blank">
+      <div class="tool-icon icon-chat">🧠</div>
+      <div class="tool-content">
+        <div class="tool-name">Claude</div>
+        <div class="tool-desc">Anthropic出品，长文本理解强，适合写作和深度分析</div>
+      </div>
     </a>
-    <a class="tool-card chat" href="https://gemini.google.com" target="_blank">
-      <div class="tool-icon chat">✨</div>
-      <div class="tool-name">Gemini</div>
-      <div class="tool-desc">Google出品，免费100万token上下文，联网能力强</div>
+    <a class="tool-card" href="https://gemini.google.com" target="_blank">
+      <div class="tool-icon icon-chat">✨</div>
+      <div class="tool-content">
+        <div class="tool-name">Gemini</div>
+        <div class="tool-desc">Google出品，免费100万token上下文，联网能力强</div>
+      </div>
     </a>
-    <a class="tool-card chat" href="https://www.perplexity.ai" target="_blank">
-      <div class="tool-icon chat">🔍</div>
-      <div class="tool-name">Perplexity</div>
-      <div class="tool-desc">AI搜索引擎，实时联网查资料，回答带来源链接</div>
+    <a class="tool-card" href="https://www.perplexity.ai" target="_blank">
+      <div class="tool-icon icon-chat">🔍</div>
+      <div class="tool-content">
+        <div class="tool-name">Perplexity</div>
+        <div class="tool-desc">AI搜索引擎，实时联网查资料，回答带来源链接</div>
+      </div>
     </a>
-    <a class="tool-card coding" href="https://cursor.com" target="_blank">
-      <div class="tool-icon coding">💻</div>
-      <div class="tool-name">Cursor</div>
-      <div class="tool-desc">AI代码编辑器，vibe coding神器，改代码直接说话</div>
+    <a class="tool-card" href="https://cursor.com" target="_blank">
+      <div class="tool-icon icon-coding">💻</div>
+      <div class="tool-content">
+        <div class="tool-name">Cursor</div>
+        <div class="tool-desc">AI代码编辑器，vibe coding神器，改代码直接说话</div>
+      </div>
     </a>
-    <a class="tool-card coding" href="https://github.com/features/copilot" target="_blank">
-      <div class="tool-icon coding">⚡</div>
-      <div class="tool-name">Copilot</div>
-      <div class="tool-desc">GitHub官方AI编程助手，VS Code里直接用</div>
+    <a class="tool-card" href="https://github.com/features/copilot" target="_blank">
+      <div class="tool-icon icon-coding">⚡</div>
+      <div class="tool-content">
+        <div class="tool-name">Copilot</div>
+        <div class="tool-desc">GitHub官方AI编程助手，VS Code里直接用</div>
+      </div>
     </a>
   </div>
 
-  <!-- AI网站/应用构建 -->
-  <div class="section-title"><span class="emoji">🌐</span> AI网站与应用构建</div>
+  <!-- AI网站构建 -->
+  <div class="section-title">
+    <span class="emoji">🌐</span>
+    <span class="label">AI网站与应用构建</span>
+    <span class="count">6个</span>
+  </div>
   <div class="tool-grid">
-    <a class="tool-card coding" href="https://bolt.new" target="_blank">
-      <div class="tool-icon coding">⚡</div>
-      <div class="tool-name">Bolt.new</div>
-      <div class="tool-desc">浏览器里喊句话就能出完整项目，可直接部署</div>
+    <a class="tool-card" href="https://bolt.new" target="_blank">
+      <div class="tool-icon icon-coding">⚡</div>
+      <div class="tool-content">
+        <div class="tool-name">Bolt.new</div>
+        <div class="tool-desc">浏览器里喊句话就能出完整项目，可直接部署</div>
+      </div>
     </a>
-    <a class="tool-card coding" href="https://v0.dev" target="_blank">
-      <div class="tool-icon coding">🎯</div>
-      <div class="tool-name">v0</div>
-      <div class="tool-desc">Vercel出品，AI生成Next.js界面，UI质量高</div>
+    <a class="tool-card" href="https://v0.dev" target="_blank">
+      <div class="tool-icon icon-coding">🎯</div>
+      <div class="tool-content">
+        <div class="tool-name">v0</div>
+        <div class="tool-desc">Vercel出品，AI生成Next.js界面，UI质量高</div>
+      </div>
     </a>
-    <a class="tool-card coding" href="https://lovable.dev" target="_blank">
-      <div class="tool-icon coding">💛</div>
-      <div class="tool-name">Lovable</div>
-      <div class="tool-desc">Idea到App几秒完成，全栈工程师级别输出</div>
+    <a class="tool-card" href="https://lovable.dev" target="_blank">
+      <div class="tool-icon icon-coding">💛</div>
+      <div class="tool-content">
+        <div class="tool-name">Lovable</div>
+        <div class="tool-desc">Idea到App几秒完成，全栈工程师级别输出</div>
+      </div>
     </a>
-    <a class="tool-card coding" href="https://windsurf.com" target="_blank">
-      <div class="tool-icon coding">🌊</div>
-      <div class="tool-name">Windsurf</div>
-      <div class="tool-desc">Agentic IDE，多步代码任务自动完成</div>
+    <a class="tool-card" href="https://windsurf.com" target="_blank">
+      <div class="tool-icon icon-coding">🌊</div>
+      <div class="tool-content">
+        <div class="tool-name">Windsurf</div>
+        <div class="tool-desc">Agentic IDE，多步代码任务自动完成</div>
+      </div>
     </a>
-    <a class="tool-card chat" href="https://www.notion.so" target="_blank">
-      <div class="tool-icon chat">📝</div>
-      <div class="tool-name">Notion</div>
-      <div class="tool-desc">笔记+AI+数据库，知识管理一体化</div>
+    <a class="tool-card" href="https://replit.com" target="_blank">
+      <div class="tool-icon icon-coding">🚀</div>
+      <div class="tool-content">
+        <div class="tool-name">Replit</div>
+        <div class="tool-desc">浏览器里写代码/跑项目/部署，全流程覆盖</div>
+      </div>
     </a>
-    <a class="tool-card coding" href="https://replit.com" target="_blank">
-      <div class="tool-icon coding">🚀</div>
-      <div class="tool-name">Replit</div>
-      <div class="tool-desc">浏览器里写代码/跑项目/部署，全流程覆盖</div>
+    <a class="tool-card" href="https://www.notion.so" target="_blank">
+      <div class="tool-icon icon-chat">📝</div>
+      <div class="tool-content">
+        <div class="tool-name">Notion</div>
+        <div class="tool-desc">笔记+AI+数据库，知识管理一体化</div>
+      </div>
     </a>
   </div>
 
   <!-- AI视频 -->
-  <div class="section-title"><span class="emoji">🎬</span> AI视频</div>
+  <div class="section-title">
+    <span class="emoji">🎬</span>
+    <span class="label">AI视频</span>
+    <span class="count">6个</span>
+  </div>
   <div class="tool-grid">
-    <a class="tool-card video" href="https://runwayml.com" target="_blank">
-      <div class="tool-icon video">🎥</div>
-      <div class="tool-name">Runway</div>
-      <div class="tool-desc">AI视频生成鼻祖，Gen-3效果惊艳，影视级输出</div>
+    <a class="tool-card" href="https://runwayml.com" target="_blank">
+      <div class="tool-icon icon-video">🎥</div>
+      <div class="tool-content">
+        <div class="tool-name">Runway</div>
+        <div class="tool-desc">AI视频生成鼻祖，Gen-3效果惊艳，影视级输出</div>
+      </div>
     </a>
-    <a class="tool-card video" href="https://pika.art" target="_blank">
-      <div class="tool-icon video">🎬</div>
-      <div class="tool-name">Pika</div>
-      <div class="tool-desc">文字转视频新秀，操作简单，生成速度快</div>
+    <a class="tool-card" href="https://pika.art" target="_blank">
+      <div class="tool-icon icon-video">🎬</div>
+      <div class="tool-content">
+        <div class="tool-name">Pika</div>
+        <div class="tool-desc">文字转视频新秀，操作简单，生成速度快</div>
+      </div>
     </a>
-    <a class="tool-card video" href="https://klingai.com" target="_blank">
-      <div class="tool-icon video">🐉</div>
-      <div class="tool-name">可灵 AI</div>
-      <div class="tool-desc">快手出品，国产视频生成顶流，支持3D场景</div>
+    <a class="tool-card" href="https://klingai.com" target="_blank">
+      <div class="tool-icon icon-video">🐉</div>
+      <div class="tool-content">
+        <div class="tool-name">可灵 AI</div>
+        <div class="tool-desc">快手出品，国产视频生成顶流，支持3D场景</div>
+      </div>
     </a>
-    <a class="tool-card video" href="https://hailuoai.video" target="_blank">
-      <div class="tool-icon video">🌪️</div>
-      <div class="tool-name">海螺AI</div>
-      <div class="tool-desc">字节跳动出品，画面质量高，国产视频AI新势力</div>
+    <a class="tool-card" href="https://hailuoai.video" target="_blank">
+      <div class="tool-icon icon-video">🌪️</div>
+      <div class="tool-content">
+        <div class="tool-name">海螺AI</div>
+        <div class="tool-desc">字节跳动出品，画面质量高，国产视频AI新势力</div>
+      </div>
     </a>
-    <a class="tool-card video" href="https://www.sora.com" target="_blank">
-      <div class="tool-icon video">🌊</div>
-      <div class="tool-name">Sora</div>
-      <div class="tool-desc">OpenAI视频生成模型，文本转视频效果逼真</div>
+    <a class="tool-card" href="https://www.sora.com" target="_blank">
+      <div class="tool-icon icon-video">🌊</div>
+      <div class="tool-content">
+        <div class="tool-name">Sora</div>
+        <div class="tool-desc">OpenAI视频生成模型，文本转视频效果逼真</div>
+      </div>
     </a>
-    <a class="tool-card video" href="https://visen.ai" target="_blank">
-      <div class="tool-icon video">🎞️</div>
-      <div class="tool-name">Viggle</div>
-      <div class="tool-desc">AI角色动画，让图片里的人动起来</div>
+    <a class="tool-card" href="https://visen.ai" target="_blank">
+      <div class="tool-icon icon-video">🎞️</div>
+      <div class="tool-content">
+        <div class="tool-name">Viggle</div>
+        <div class="tool-desc">AI角色动画，让图片里的人动起来</div>
+      </div>
     </a>
   </div>
 
   <!-- AI图片 -->
-  <div class="section-title"><span class="emoji">🖼️</span> AI图片</div>
+  <div class="section-title">
+    <span class="emoji">🖼️</span>
+    <span class="label">AI图片</span>
+    <span class="count">6个</span>
+  </div>
   <div class="tool-grid">
-    <a class="tool-card image" href="https://midjourney.com" target="_blank">
-      <div class="tool-icon image">🎨</div>
-      <div class="tool-name">Midjourney</div>
-      <div class="tool-desc">图片生成天花板，艺术感强，Discord里喊话出图</div>
+    <a class="tool-card" href="https://midjourney.com" target="_blank">
+      <div class="tool-icon icon-image">🎨</div>
+      <div class="tool-content">
+        <div class="tool-name">Midjourney</div>
+        <div class="tool-desc">图片生成天花板，艺术感强，Discord里喊话出图</div>
+      </div>
     </a>
-    <a class="tool-card image" href="https://openai.com/index/dall-e-3" target="_blank">
-      <div class="tool-icon image">🖌️</div>
-      <div class="tool-name">DALL·E 3</div>
-      <div class="tool-desc">OpenAI图片模型，理解指令强，ChatGPT里直接用</div>
+    <a class="tool-card" href="https://openai.com/index/dall-e-3" target="_blank">
+      <div class="tool-icon icon-image">🖌️</div>
+      <div class="tool-content">
+        <div class="tool-name">DALL·E 3</div>
+        <div class="tool-desc">OpenAI图片模型，理解指令强，ChatGPT里直接用</div>
+      </div>
     </a>
-    <a class="tool-card image" href="https://ideogram.ai" target="_blank">
-      <div class="tool-icon image">✨</div>
-      <div class="tool-name">Ideogram</div>
-      <div class="tool-desc">文字生成图片神器，在图片里生成准确文字</div>
+    <a class="tool-card" href="https://ideogram.ai" target="_blank">
+      <div class="tool-icon icon-image">✨</div>
+      <div class="tool-content">
+        <div class="tool-name">Ideogram</div>
+        <div class="tool-desc">文字生成图片神器，在图片里生成准确文字</div>
+      </div>
     </a>
-    <a class="tool-card image" href="https://www.recraft.ai" target="_blank">
-      <div class="tool-icon image">🎯</div>
-      <div class="tool-name">Recraft</div>
-      <div class="tool-desc">AI图片+矢量图，可生成SVG格式，设计友好</div>
+    <a class="tool-card" href="https://www.recraft.ai" target="_blank">
+      <div class="tool-icon icon-image">🎯</div>
+      <div class="tool-content">
+        <div class="tool-name">Recraft</div>
+        <div class="tool-desc">AI图片+矢量图，可生成SVG格式，设计友好</div>
+      </div>
     </a>
-    <a class="tool-card image" href="https://tongyi.aliyun.com/wanxiangan" target="_blank">
-      <div class="tool-icon image">🖼️</div>
-      <div class="tool-name">通义万相</div>
-      <div class="tool-desc">阿里出品，国产图片生成，支持中文提示词</div>
+    <a class="tool-card" href="https://tongyi.aliyun.com/wanxiangan" target="_blank">
+      <div class="tool-icon icon-image">🖼️</div>
+      <div class="tool-content">
+        <div class="tool-name">通义万相</div>
+        <div class="tool-desc">阿里出品，国产图片生成，支持中文提示词</div>
+      </div>
     </a>
-    <a class="tool-card image" href="https://www.stable-diffusion.cc" target="_blank">
-      <div class="tool-icon image">🌌</div>
-      <div class="tool-name">Stable Diffusion</div>
-      <div class="tool-desc">开源免费可本地跑，模型丰富，AI图片鼻祖</div>
+    <a class="tool-card" href="https://www.stable-diffusion.cc" target="_blank">
+      <div class="tool-icon icon-image">🌌</div>
+      <div class="tool-content">
+        <div class="tool-name">Stable Diffusion</div>
+        <div class="tool-desc">开源免费可本地跑，模型丰富，AI图片鼻祖</div>
+      </div>
     </a>
   </div>
 
-  <!-- AI效率工具 -->
-  <div class="section-title"><span class="emoji">⚡</span> AI效率与自动化</div>
+  <!-- AI效率 -->
+  <div class="section-title">
+    <span class="emoji">⚡</span>
+    <span class="label">AI效率与自动化</span>
+    <span class="count">6个</span>
+  </div>
   <div class="tool-grid">
-    <a class="tool-card loop" href="https://n8n.io" target="_blank">
-      <div class="tool-icon loop">🔗</div>
-      <div class="tool-name">n8n</div>
-      <div class="tool-desc">开源工作流自动化，可自托管，高度可定制</div>
+    <a class="tool-card" href="https://n8n.io" target="_blank">
+      <div class="tool-icon icon-loop">🔗</div>
+      <div class="tool-content">
+        <div class="tool-name">n8n</div>
+        <div class="tool-desc">开源工作流自动化，可自托管，高度可定制</div>
+      </div>
     </a>
-    <a class="tool-card loop" href="https://www.make.com" target="_blank">
-      <div class="tool-icon loop">🔧</div>
-      <div class="tool-name">Make</div>
-      <div class="tool-desc">可视化工作流自动化，比Zapier更灵活</div>
+    <a class="tool-card" href="https://www.make.com" target="_blank">
+      <div class="tool-icon icon-loop">🔧</div>
+      <div class="tool-content">
+        <div class="tool-name">Make</div>
+        <div class="tool-desc">可视化工作流自动化，比Zapier更灵活</div>
+      </div>
     </a>
-    <a class="tool-card loop" href="https://zapier.com" target="_blank">
-      <div class="tool-icon loop">⚡</div>
-      <div class="tool-name">Zapier</div>
-      <div class="tool-desc">无代码自动化，连8000+应用，让AI替你干活</div>
+    <a class="tool-card" href="https://zapier.com" target="_blank">
+      <div class="tool-icon icon-loop">⚡</div>
+      <div class="tool-content">
+        <div class="tool-name">Zapier</div>
+        <div class="tool-desc">无代码自动化，连8000+应用，让AI替你干活</div>
+      </div>
     </a>
-    <a class="tool-card coding" href="https://www.raycast.com" target="_blank">
-      <div class="tool-icon coding">🚀</div>
-      <div class="tool-name">Raycast</div>
-      <div class="tool-desc">Mac最强效率工具，AI加持后堪称终极启动器</div>
+    <a class="tool-card" href="https://www.raycast.com" target="_blank">
+      <div class="tool-icon icon-coding">🚀</div>
+      <div class="tool-content">
+        <div class="tool-name">Raycast</div>
+        <div class="tool-desc">Mac最强效率工具，AI加持后堪称终极启动器</div>
+      </div>
     </a>
-    <a class="tool-card coding" href="https://openinterpreter.com" target="_blank">
-      <div class="tool-icon coding">🖥️</div>
-      <div class="tool-name">Open Interpreter</div>
-      <div class="tool-desc">在终端里用AI控制电脑，自动化本地所有任务</div>
+    <a class="tool-card" href="https://openinterpreter.com" target="_blank">
+      <div class="tool-icon icon-coding">🖥️</div>
+      <div class="tool-content">
+        <div class="tool-name">Open Interpreter</div>
+        <div class="tool-desc">在终端里用AI控制电脑，自动化本地所有任务</div>
+      </div>
     </a>
-    <a class="tool-card loop" href="https://www.jianying.com" target="_blank">
-      <div class="tool-icon loop">🎬</div>
-      <div class="tool-name">剪映</div>
-      <div class="tool-desc">字节出品，AI脚本/配音/字幕，视频创作者必备</div>
+    <a class="tool-card" href="https://www.jianying.com" target="_blank">
+      <div class="tool-icon icon-video">🎬</div>
+      <div class="tool-content">
+        <div class="tool-name">剪映</div>
+        <div class="tool-desc">字节出品，AI脚本/配音/字幕，视频创作者必备</div>
+      </div>
     </a>
   </div>
 
   <!-- AI写作 -->
-  <div class="section-title"><span class="emoji">✍️</span> AI写作与内容创作</div>
+  <div class="section-title">
+    <span class="emoji">✍️</span>
+    <span class="label">AI写作与内容创作</span>
+    <span class="count">4个</span>
+  </div>
   <div class="tool-grid">
-    <a class="tool-card write" href="https://xiezuocat.com" target="_blank">
-      <div class="tool-icon write">🐱</div>
-      <div class="tool-name">秘塔写作猫</div>
-      <div class="tool-desc">国产AI写作助手，纠错、改写、润色全搞定</div>
+    <a class="tool-card" href="https://xiezuocat.com" target="_blank">
+      <div class="tool-icon icon-write">🐱</div>
+      <div class="tool-content">
+        <div class="tool-name">秘塔写作猫</div>
+        <div class="tool-desc">国产AI写作助手，纠错、改写、润色全搞定</div>
+      </div>
     </a>
-    <a class="tool-card write" href="https://iflyrec.com" target="_blank">
-      <div class="tool-icon write">🎙️</div>
-      <div class="tool-name">讯飞语记</div>
-      <div class="tool-desc">语音转文字+AI改写，口播脚本神器</div>
+    <a class="tool-card" href="https://iflyrec.com" target="_blank">
+      <div class="tool-icon icon-write">🎙️</div>
+      <div class="tool-content">
+        <div class="tool-name">讯飞语记</div>
+        <div class="tool-desc">语音转文字+AI改写，口播脚本神器</div>
+      </div>
     </a>
-    <a class="tool-card write" href="https://zenvideo.qq.com" target="_blank">
-      <div class="tool-icon write">📄</div>
-      <div class="tool-name">腾讯智影</div>
-      <div class="tool-desc">腾讯出品，AI写稿/配音/数字人，一站式视频创作</div>
+    <a class="tool-card" href="https://zenvideo.qq.com" target="_blank">
+      <div class="tool-icon icon-write">📄</div>
+      <div class="tool-content">
+        <div class="tool-name">腾讯智影</div>
+        <div class="tool-desc">腾讯出品，AI写稿/配音/数字人，一站式视频创作</div>
+      </div>
     </a>
-    <a class="tool-card chat" href="https://www.coze.cn" target="_blank">
-      <div class="tool-icon chat">🤖</div>
-      <div class="tool-name">Coze</div>
-      <div class="tool-desc">字节出品，AI Bot开发平台，支持小红书/抖音发布</div>
+    <a class="tool-card" href="https://www.coze.cn" target="_blank">
+      <div class="tool-icon icon-chat">🤖</div>
+      <div class="tool-content">
+        <div class="tool-name">Coze</div>
+        <div class="tool-desc">字节出品，AI Bot开发平台，支持小红书/抖音发布</div>
+      </div>
     </a>
   </div>
 
   <!-- CTA -->
-  <div class="cta">
+  <div class="cta-section">
     <p>用AI放大你的能力，用工具放大你的效率</p>
     <a href="https://xhslink.com/m/15zyxo67w0J" target="_blank">
       📕 关注清溪小某书
@@ -605,7 +695,7 @@
   </div>
 
   <footer>
-    © 2026 清溪的AI工具箱<br>
+    © 2026 清溪的AI工具箱 ·
     <a href="https://qingxi-ai-toolbox.vercel.app" target="_blank">qingxi-ai-toolbox.vercel.app</a>
   </footer>
 
