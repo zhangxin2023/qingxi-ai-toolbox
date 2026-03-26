@@ -141,13 +141,14 @@
   .hero p {
     font-size: 18px;
     color: var(--text-2);
-    max-width: 480px;
+    max-width: 520px;
     margin: 0 auto 28px;
-    line-height: 1.6;
+    line-height: 1.65;
   }
 
   .hero-social {
     display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 36px;
   }
 
   .hero-social a {
@@ -172,7 +173,7 @@
   /* 统计 */
   .stats {
     display: flex; justify-content: center; gap: 40px;
-    margin-top: 40px; padding-top: 40px;
+    padding-top: 36px;
     border-top: 1px solid var(--border);
   }
 
@@ -187,16 +188,119 @@
     margin-top: 2px;
   }
 
-  /* 分类标题 */
+  /* ========== 我的日用清单 ========== */
+  .my-stack {
+    background: linear-gradient(135deg, #f5f3ff 0%, #fdf2f8 100%);
+    border: 1px solid rgba(124,58,237,0.12);
+    border-radius: 20px;
+    padding: 32px;
+    margin-top: 48px;
+  }
+
+  .my-stack-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .my-stack-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    background: rgba(124,58,237,0.10);
+    border: 1px solid rgba(124,58,237,0.2);
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .my-stack-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .my-stack-desc {
+    font-size: 13px;
+    color: var(--text-2);
+    margin-bottom: 20px;
+  }
+
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 12px;
+  }
+
+  .stack-card {
+    background: #fff;
+    border: 1px solid rgba(124,58,237,0.15);
+    border-radius: 12px;
+    padding: 16px;
+    transition: all 0.18s;
+    text-decoration: none;
+    color: var(--text);
+    display: block;
+  }
+
+  .stack-card:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  .stack-card-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .stack-icon {
+    width: 36px; height: 36px; flex-shrink: 0;
+    border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+  }
+
+  .icon-purple { background: rgba(124,58,237,0.10); }
+  .icon-blue { background: rgba(37,99,235,0.10); }
+  .icon-pink { background: rgba(236,72,153,0.10); }
+  .icon-orange { background: rgba(217,119,6,0.10); }
+  .icon-cyan { background: rgba(8,145,178,0.10); }
+  .icon-green { background: rgba(5,150,105,0.10); }
+
+  .stack-name {
+    font-size: 14px; font-weight: 600;
+    color: var(--text);
+  }
+
+  .stack-use {
+    font-size: 12px;
+    color: var(--text-2);
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+
+  .stack-stars {
+    font-size: 11px;
+    color: var(--orange);
+    font-weight: 600;
+  }
+
+  /* ========== 全部工具 ========== */
   .section-title {
     display: flex; align-items: center; gap: 10px;
     margin: 52px 0 18px;
     padding-top: 8px;
   }
 
-  .section-title .emoji {
-    font-size: 18px;
-  }
+  .section-title .emoji { font-size: 18px; }
 
   .section-title .label {
     font-size: 13px; font-weight: 700;
@@ -247,24 +351,12 @@
     transform: translateY(-2px);
   }
 
-  .tool-card:active {
-    transform: translateY(0);
-  }
-
-  /* 分类图标颜色 */
   .tool-icon {
     width: 36px; height: 36px; flex-shrink: 0;
     border-radius: 9px;
     display: flex; align-items: center; justify-content: center;
     font-size: 16px;
   }
-
-  .icon-chat { background: rgba(124,58,237,0.10); }
-  .icon-coding { background: rgba(37,99,235,0.10); }
-  .icon-video { background: rgba(236,72,153,0.10); }
-  .icon-image { background: rgba(217,119,6,0.10); }
-  .icon-loop { background: rgba(8,145,178,0.10); }
-  .icon-write { background: rgba(5,150,105,0.10); }
 
   .tool-content { flex: 1; min-width: 0; }
 
@@ -283,6 +375,14 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
+  /* 分类hover图标高亮 */
+  .tool-card:hover .icon-purple { background: rgba(124,58,237,0.18); }
+  .tool-card:hover .icon-blue { background: rgba(37,99,235,0.18); }
+  .tool-card:hover .icon-pink { background: rgba(236,72,153,0.18); }
+  .tool-card:hover .icon-orange { background: rgba(217,119,6,0.18); }
+  .tool-card:hover .icon-cyan { background: rgba(8,145,178,0.18); }
+  .tool-card:hover .icon-green { background: rgba(5,150,105,0.18); }
 
   /* CTA */
   .cta-section {
@@ -327,23 +427,18 @@
 
   footer a { color: var(--accent); text-decoration: none; }
 
-  /* 分类hover高亮 */
-  .tool-card:hover .icon-chat { background: rgba(124,58,237,0.18); }
-  .tool-card:hover .icon-coding { background: rgba(37,99,235,0.18); }
-  .tool-card:hover .icon-video { background: rgba(236,72,153,0.18); }
-  .tool-card:hover .icon-image { background: rgba(217,119,6,0.18); }
-  .tool-card:hover .icon-loop { background: rgba(8,145,178,0.18); }
-  .tool-card:hover .icon-write { background: rgba(5,150,105,0.18); }
-
   @media (max-width: 600px) {
     .hero h1 { font-size: 32px; }
     .hero p { font-size: 16px; }
     .stats { gap: 24px; }
+    .stack-grid { grid-template-columns: 1fr 1fr; }
     .tool-grid { grid-template-columns: 1fr 1fr; }
     .topbar-links { display: none; }
+    .my-stack { padding: 24px 20px; }
   }
 
   @media (max-width: 380px) {
+    .stack-grid { grid-template-columns: 1fr; }
     .tool-grid { grid-template-columns: 1fr; }
   }
 </style>
@@ -354,7 +449,7 @@
 <header class="topbar">
   <div class="topbar-logo">
     <div class="logo-icon">🧠</div>
-    AI工具箱
+    清溪的AI工具箱
   </div>
   <nav class="topbar-links">
     <a href="https://xhslink.com/m/15zyxo67w0J" target="_blank">📕 小某书</a>
@@ -370,14 +465,13 @@
   <section class="hero">
     <div class="hero-badge">✦ 已收录 30+ 热门AI工具</div>
     <h1>清溪的<span>AI工具箱</span></h1>
-    <p>整理全网最实用的 AI 工具，按场景分类，开箱即用</p>
+    <p>这是我真实在用的AI工具导航站 —— 不是我收藏最多的，是我每天都在用的</p>
     <div class="hero-social">
       <a href="https://xhslink.com/m/15zyxo67w0J" target="_blank">📕 小某书</a>
       <a href="https://v.douyin.com/jUdv0B2yNdw/" target="_blank">🎵 某音</a>
       <a href="https://github.com/zhangxin2023" target="_blank">⚡ GitHub</a>
       <a href="weixin://dl/chat/qingxi20250501">💬 联系我</a>
     </div>
-
     <div class="stats">
       <div class="stat-item">
         <div class="stat-num">30+</div>
@@ -394,6 +488,77 @@
     </div>
   </section>
 
+  <!-- ========== 我的日用清单 ========== -->
+  <section class="my-stack">
+    <div class="my-stack-header">
+      <div class="my-stack-badge">⭐ 清溪推荐</div>
+      <div class="my-stack-title">我的AI装备</div>
+    </div>
+    <p class="my-stack-desc">不是我收藏最多的，是我每天都在用的 · 每个都经过真实使用验证</p>
+
+    <div class="stack-grid">
+      <!-- Cursor - 每天用 -->
+      <a class="stack-card" href="https://cursor.com" target="_blank">
+        <div class="stack-card-top">
+          <div class="stack-icon icon-purple">💻</div>
+          <div class="stack-name">Cursor</div>
+        </div>
+        <div class="stack-use">每天都在用 · 30分钟用Cursor做了这个工具箱</div>
+        <div class="stack-stars">⭐⭐⭐⭐⭐</div>
+      </a>
+
+      <!-- Claude - 写作 -->
+      <a class="stack-card" href="https://claude.ai" target="_blank">
+        <div class="stack-card-top">
+          <div class="stack-icon icon-purple">🧠</div>
+          <div class="stack-name">Claude</div>
+        </div>
+        <div class="stack-use">深度写作和分析 · 帮我拆解项目思路</div>
+        <div class="stack-stars">⭐⭐⭐⭐⭐</div>
+      </a>
+
+      <!-- 剪映 - 视频 -->
+      <a class="stack-card" href="https://www.jianying.com" target="_blank">
+        <div class="stack-card-top">
+          <div class="stack-icon icon-pink">🎬</div>
+          <div class="stack-name">剪映</div>
+        </div>
+        <div class="stack-use">视频剪辑 · 配音+字幕+脚本，短视频必备</div>
+        <div class="stack-stars">⭐⭐⭐⭐⭐</div>
+      </a>
+
+      <!-- n8n - 自动化 -->
+      <a class="stack-card" href="https://n8n.io" target="_blank">
+        <div class="stack-card-top">
+          <div class="stack-icon icon-cyan">🔗</div>
+          <div class="stack-name">n8n</div>
+        </div>
+        <div class="stack-use">工作流自动化 · 串联小红书+抖音+飞书</div>
+        <div class="stack-stars">⭐⭐⭐⭐⭐</div>
+      </a>
+
+      <!-- Perplexity - 搜索 -->
+      <a class="stack-card" href="https://www.perplexity.ai" target="_blank">
+        <div class="stack-card-top">
+          <div class="stack-icon icon-blue">🔍</div>
+          <div class="stack-name">Perplexity</div>
+        </div>
+        <div class="stack-use">AI搜索 · 找资料比Google更快，带来源</div>
+        <div class="stack-stars">⭐⭐⭐⭐⭐</div>
+      </a>
+
+      <!-- Ideogram - 图片 -->
+      <a class="stack-card" href="https://ideogram.ai" target="_blank">
+        <div class="stack-card-top">
+          <div class="stack-icon icon-orange">✨</div>
+          <div class="stack-name">Ideogram</div>
+        </div>
+        <div class="stack-use">AI图片生成 · 封面图必备，能精准生成文字</div>
+        <div class="stack-stars">⭐⭐⭐⭐</div>
+      </a>
+    </div>
+  </section>
+
   <!-- AI对话助手 -->
   <div class="section-title">
     <span class="emoji">🤖</span>
@@ -402,42 +567,42 @@
   </div>
   <div class="tool-grid">
     <a class="tool-card" href="https://chat.openai.com" target="_blank">
-      <div class="tool-icon icon-chat">🤖</div>
+      <div class="tool-icon icon-purple">🤖</div>
       <div class="tool-content">
         <div class="tool-name">ChatGPT</div>
         <div class="tool-desc">OpenAI出品，全球最流行AI对话工具，支持多模态</div>
       </div>
     </a>
     <a class="tool-card" href="https://claude.ai" target="_blank">
-      <div class="tool-icon icon-chat">🧠</div>
+      <div class="tool-icon icon-purple">🧠</div>
       <div class="tool-content">
         <div class="tool-name">Claude</div>
         <div class="tool-desc">Anthropic出品，长文本理解强，适合写作和深度分析</div>
       </div>
     </a>
     <a class="tool-card" href="https://gemini.google.com" target="_blank">
-      <div class="tool-icon icon-chat">✨</div>
+      <div class="tool-icon icon-purple">✨</div>
       <div class="tool-content">
         <div class="tool-name">Gemini</div>
         <div class="tool-desc">Google出品，免费100万token上下文，联网能力强</div>
       </div>
     </a>
     <a class="tool-card" href="https://www.perplexity.ai" target="_blank">
-      <div class="tool-icon icon-chat">🔍</div>
+      <div class="tool-icon icon-blue">🔍</div>
       <div class="tool-content">
         <div class="tool-name">Perplexity</div>
         <div class="tool-desc">AI搜索引擎，实时联网查资料，回答带来源链接</div>
       </div>
     </a>
     <a class="tool-card" href="https://cursor.com" target="_blank">
-      <div class="tool-icon icon-coding">💻</div>
+      <div class="tool-icon icon-blue">💻</div>
       <div class="tool-content">
         <div class="tool-name">Cursor</div>
         <div class="tool-desc">AI代码编辑器，vibe coding神器，改代码直接说话</div>
       </div>
     </a>
     <a class="tool-card" href="https://github.com/features/copilot" target="_blank">
-      <div class="tool-icon icon-coding">⚡</div>
+      <div class="tool-icon icon-blue">⚡</div>
       <div class="tool-content">
         <div class="tool-name">Copilot</div>
         <div class="tool-desc">GitHub官方AI编程助手，VS Code里直接用</div>
@@ -453,42 +618,42 @@
   </div>
   <div class="tool-grid">
     <a class="tool-card" href="https://bolt.new" target="_blank">
-      <div class="tool-icon icon-coding">⚡</div>
+      <div class="tool-icon icon-blue">⚡</div>
       <div class="tool-content">
         <div class="tool-name">Bolt.new</div>
         <div class="tool-desc">浏览器里喊句话就能出完整项目，可直接部署</div>
       </div>
     </a>
     <a class="tool-card" href="https://v0.dev" target="_blank">
-      <div class="tool-icon icon-coding">🎯</div>
+      <div class="tool-icon icon-blue">🎯</div>
       <div class="tool-content">
         <div class="tool-name">v0</div>
         <div class="tool-desc">Vercel出品，AI生成Next.js界面，UI质量高</div>
       </div>
     </a>
     <a class="tool-card" href="https://lovable.dev" target="_blank">
-      <div class="tool-icon icon-coding">💛</div>
+      <div class="tool-icon icon-blue">💛</div>
       <div class="tool-content">
         <div class="tool-name">Lovable</div>
         <div class="tool-desc">Idea到App几秒完成，全栈工程师级别输出</div>
       </div>
     </a>
     <a class="tool-card" href="https://windsurf.com" target="_blank">
-      <div class="tool-icon icon-coding">🌊</div>
+      <div class="tool-icon icon-blue">🌊</div>
       <div class="tool-content">
         <div class="tool-name">Windsurf</div>
         <div class="tool-desc">Agentic IDE，多步代码任务自动完成</div>
       </div>
     </a>
     <a class="tool-card" href="https://replit.com" target="_blank">
-      <div class="tool-icon icon-coding">🚀</div>
+      <div class="tool-icon icon-blue">🚀</div>
       <div class="tool-content">
         <div class="tool-name">Replit</div>
         <div class="tool-desc">浏览器里写代码/跑项目/部署，全流程覆盖</div>
       </div>
     </a>
     <a class="tool-card" href="https://www.notion.so" target="_blank">
-      <div class="tool-icon icon-chat">📝</div>
+      <div class="tool-icon icon-purple">📝</div>
       <div class="tool-content">
         <div class="tool-name">Notion</div>
         <div class="tool-desc">笔记+AI+数据库，知识管理一体化</div>
@@ -504,42 +669,42 @@
   </div>
   <div class="tool-grid">
     <a class="tool-card" href="https://runwayml.com" target="_blank">
-      <div class="tool-icon icon-video">🎥</div>
+      <div class="tool-icon icon-pink">🎥</div>
       <div class="tool-content">
         <div class="tool-name">Runway</div>
         <div class="tool-desc">AI视频生成鼻祖，Gen-3效果惊艳，影视级输出</div>
       </div>
     </a>
     <a class="tool-card" href="https://pika.art" target="_blank">
-      <div class="tool-icon icon-video">🎬</div>
+      <div class="tool-icon icon-pink">🎬</div>
       <div class="tool-content">
         <div class="tool-name">Pika</div>
         <div class="tool-desc">文字转视频新秀，操作简单，生成速度快</div>
       </div>
     </a>
     <a class="tool-card" href="https://klingai.com" target="_blank">
-      <div class="tool-icon icon-video">🐉</div>
+      <div class="tool-icon icon-pink">🐉</div>
       <div class="tool-content">
         <div class="tool-name">可灵 AI</div>
         <div class="tool-desc">快手出品，国产视频生成顶流，支持3D场景</div>
       </div>
     </a>
     <a class="tool-card" href="https://hailuoai.video" target="_blank">
-      <div class="tool-icon icon-video">🌪️</div>
+      <div class="tool-icon icon-pink">🌪️</div>
       <div class="tool-content">
         <div class="tool-name">海螺AI</div>
         <div class="tool-desc">字节跳动出品，画面质量高，国产视频AI新势力</div>
       </div>
     </a>
     <a class="tool-card" href="https://www.sora.com" target="_blank">
-      <div class="tool-icon icon-video">🌊</div>
+      <div class="tool-icon icon-pink">🌊</div>
       <div class="tool-content">
         <div class="tool-name">Sora</div>
         <div class="tool-desc">OpenAI视频生成模型，文本转视频效果逼真</div>
       </div>
     </a>
     <a class="tool-card" href="https://visen.ai" target="_blank">
-      <div class="tool-icon icon-video">🎞️</div>
+      <div class="tool-icon icon-pink">🎞️</div>
       <div class="tool-content">
         <div class="tool-name">Viggle</div>
         <div class="tool-desc">AI角色动画，让图片里的人动起来</div>
@@ -555,42 +720,42 @@
   </div>
   <div class="tool-grid">
     <a class="tool-card" href="https://midjourney.com" target="_blank">
-      <div class="tool-icon icon-image">🎨</div>
+      <div class="tool-icon icon-orange">🎨</div>
       <div class="tool-content">
         <div class="tool-name">Midjourney</div>
         <div class="tool-desc">图片生成天花板，艺术感强，Discord里喊话出图</div>
       </div>
     </a>
     <a class="tool-card" href="https://openai.com/index/dall-e-3" target="_blank">
-      <div class="tool-icon icon-image">🖌️</div>
+      <div class="tool-icon icon-orange">🖌️</div>
       <div class="tool-content">
         <div class="tool-name">DALL·E 3</div>
         <div class="tool-desc">OpenAI图片模型，理解指令强，ChatGPT里直接用</div>
       </div>
     </a>
     <a class="tool-card" href="https://ideogram.ai" target="_blank">
-      <div class="tool-icon icon-image">✨</div>
+      <div class="tool-icon icon-orange">✨</div>
       <div class="tool-content">
         <div class="tool-name">Ideogram</div>
         <div class="tool-desc">文字生成图片神器，在图片里生成准确文字</div>
       </div>
     </a>
     <a class="tool-card" href="https://www.recraft.ai" target="_blank">
-      <div class="tool-icon icon-image">🎯</div>
+      <div class="tool-icon icon-orange">🎯</div>
       <div class="tool-content">
         <div class="tool-name">Recraft</div>
         <div class="tool-desc">AI图片+矢量图，可生成SVG格式，设计友好</div>
       </div>
     </a>
     <a class="tool-card" href="https://tongyi.aliyun.com/wanxiangan" target="_blank">
-      <div class="tool-icon icon-image">🖼️</div>
+      <div class="tool-icon icon-orange">🖼️</div>
       <div class="tool-content">
         <div class="tool-name">通义万相</div>
         <div class="tool-desc">阿里出品，国产图片生成，支持中文提示词</div>
       </div>
     </a>
     <a class="tool-card" href="https://www.stable-diffusion.cc" target="_blank">
-      <div class="tool-icon icon-image">🌌</div>
+      <div class="tool-icon icon-orange">🌌</div>
       <div class="tool-content">
         <div class="tool-name">Stable Diffusion</div>
         <div class="tool-desc">开源免费可本地跑，模型丰富，AI图片鼻祖</div>
@@ -606,42 +771,42 @@
   </div>
   <div class="tool-grid">
     <a class="tool-card" href="https://n8n.io" target="_blank">
-      <div class="tool-icon icon-loop">🔗</div>
+      <div class="tool-icon icon-cyan">🔗</div>
       <div class="tool-content">
         <div class="tool-name">n8n</div>
         <div class="tool-desc">开源工作流自动化，可自托管，高度可定制</div>
       </div>
     </a>
     <a class="tool-card" href="https://www.make.com" target="_blank">
-      <div class="tool-icon icon-loop">🔧</div>
+      <div class="tool-icon icon-cyan">🔧</div>
       <div class="tool-content">
         <div class="tool-name">Make</div>
         <div class="tool-desc">可视化工作流自动化，比Zapier更灵活</div>
       </div>
     </a>
     <a class="tool-card" href="https://zapier.com" target="_blank">
-      <div class="tool-icon icon-loop">⚡</div>
+      <div class="tool-icon icon-cyan">⚡</div>
       <div class="tool-content">
         <div class="tool-name">Zapier</div>
         <div class="tool-desc">无代码自动化，连8000+应用，让AI替你干活</div>
       </div>
     </a>
     <a class="tool-card" href="https://www.raycast.com" target="_blank">
-      <div class="tool-icon icon-coding">🚀</div>
+      <div class="tool-icon icon-blue">🚀</div>
       <div class="tool-content">
         <div class="tool-name">Raycast</div>
         <div class="tool-desc">Mac最强效率工具，AI加持后堪称终极启动器</div>
       </div>
     </a>
     <a class="tool-card" href="https://openinterpreter.com" target="_blank">
-      <div class="tool-icon icon-coding">🖥️</div>
+      <div class="tool-icon icon-blue">🖥️</div>
       <div class="tool-content">
         <div class="tool-name">Open Interpreter</div>
         <div class="tool-desc">在终端里用AI控制电脑，自动化本地所有任务</div>
       </div>
     </a>
     <a class="tool-card" href="https://www.jianying.com" target="_blank">
-      <div class="tool-icon icon-video">🎬</div>
+      <div class="tool-icon icon-pink">🎬</div>
       <div class="tool-content">
         <div class="tool-name">剪映</div>
         <div class="tool-desc">字节出品，AI脚本/配音/字幕，视频创作者必备</div>
@@ -657,28 +822,28 @@
   </div>
   <div class="tool-grid">
     <a class="tool-card" href="https://xiezuocat.com" target="_blank">
-      <div class="tool-icon icon-write">🐱</div>
+      <div class="tool-icon icon-green">🐱</div>
       <div class="tool-content">
         <div class="tool-name">秘塔写作猫</div>
         <div class="tool-desc">国产AI写作助手，纠错、改写、润色全搞定</div>
       </div>
     </a>
     <a class="tool-card" href="https://iflyrec.com" target="_blank">
-      <div class="tool-icon icon-write">🎙️</div>
+      <div class="tool-icon icon-green">🎙️</div>
       <div class="tool-content">
         <div class="tool-name">讯飞语记</div>
         <div class="tool-desc">语音转文字+AI改写，口播脚本神器</div>
       </div>
     </a>
     <a class="tool-card" href="https://zenvideo.qq.com" target="_blank">
-      <div class="tool-icon icon-write">📄</div>
+      <div class="tool-icon icon-green">📄</div>
       <div class="tool-content">
         <div class="tool-name">腾讯智影</div>
         <div class="tool-desc">腾讯出品，AI写稿/配音/数字人，一站式视频创作</div>
       </div>
     </a>
     <a class="tool-card" href="https://www.coze.cn" target="_blank">
-      <div class="tool-icon icon-chat">🤖</div>
+      <div class="tool-icon icon-purple">🤖</div>
       <div class="tool-content">
         <div class="tool-name">Coze</div>
         <div class="tool-desc">字节出品，AI Bot开发平台，支持小红书/抖音发布</div>
