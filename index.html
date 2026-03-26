@@ -5,18 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>清溪的AI工具箱</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
   :root {
-    --bg: #0f0f1a;
-    --card-bg: rgba(255,255,255,0.05);
+    --bg: #070a14;
+    --bg2: #0d1120;
+    --card-bg: rgba(255,255,255,0.04);
     --card-border: rgba(255,255,255,0.08);
-    --primary: #8B5CF6;
-    --primary-light: #a78bfa;
-    --gradient: linear-gradient(135deg, #667eea, #764ba2, #6B8DD6);
-    --text: #f0f0f0;
-    --text-muted: #9ca3af;
+    --purple: #8B5CF6;
+    --pink: #ec4899;
+    --blue: #3b82f6;
+    --cyan: #06b6d4;
+    --green: #10b981;
+    --orange: #f59e0b;
+    --text: #f1f5f9;
+    --text-muted: #94a3b8;
     --radius: 16px;
+    --radius-sm: 10px;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -27,52 +32,136 @@
     color: var(--text);
     min-height: 100vh;
     line-height: 1.6;
+    overflow-x: hidden;
   }
 
-  body::before {
-    content: '';
+  /* 动态背景 */
+  .bg-grid {
     position: fixed;
-    top: -50%; left: -50%;
-    width: 200%; height: 200%;
-    background: radial-gradient(ellipse at 30% 20%, rgba(102,126,234,0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 80%, rgba(118,75,162,0.1) 0%, transparent 50%);
-    z-index: -1;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(139,92,246,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(139,92,246,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+    animation: float 8s ease-in-out infinite;
+  }
+  .orb-1 {
+    width: 400px; height: 400px;
+    background: rgba(139,92,246,0.12);
+    top: -100px; left: -100px;
+    animation-delay: 0s;
+  }
+  .orb-2 {
+    width: 350px; height: 350px;
+    background: rgba(236,72,153,0.10);
+    bottom: -80px; right: -80px;
+    animation-delay: -3s;
+  }
+  .orb-3 {
+    width: 250px; height: 250px;
+    background: rgba(59,130,246,0.10);
+    top: 40%; left: 60%;
+    animation-delay: -5s;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(20px, -20px) scale(1.05); }
+    66% { transform: translate(-10px, 10px) scale(0.95); }
   }
 
   .container {
-    max-width: 900px;
+    max-width: 960px;
     margin: 0 auto;
     padding: 40px 20px 60px;
+    position: relative;
+    z-index: 1;
   }
 
+  /* Hero */
   .hero {
     text-align: center;
-    padding: 50px 0 40px;
+    padding: 60px 0 50px;
+  }
+
+  /* 顶部标签 */
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: rgba(139,92,246,0.15);
+    border: 1px solid rgba(139,92,246,0.3);
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #a78bfa;
+    margin-bottom: 20px;
+  }
+  .hero-badge .dot {
+    width: 6px; height: 6px;
+    background: var(--purple);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
   }
 
   .avatar {
-    width: 96px; height: 96px;
+    width: 88px; height: 88px;
     border-radius: 50%;
-    background: var(--gradient);
+    background: linear-gradient(135deg, #8B5CF6, #ec4899, #3b82f6);
     display: flex; align-items: center; justify-content: center;
-    font-size: 36px; font-weight: 700;
+    font-size: 32px; font-weight: 700;
     margin: 0 auto 16px;
-    box-shadow: 0 0 40px rgba(139,92,246,0.4);
+    box-shadow: 0 0 0 4px rgba(139,92,246,0.2), 0 0 40px rgba(139,92,246,0.4);
   }
 
   .hero h1 {
-    font-size: 28px; font-weight: 700; margin-bottom: 8px;
-    background: var(--gradient);
+    font-size: 36px; font-weight: 800; margin-bottom: 8px;
+    background: linear-gradient(135deg, #f1f5f9 0%, #a78bfa 50%, #ec4899 100%);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     background-clip: text;
+    letter-spacing: -0.02em;
   }
 
   .hero p {
-    color: var(--text-muted); font-size: 15px; margin-bottom: 20px;
+    color: var(--text-muted); font-size: 16px; margin-bottom: 20px;
+  }
+
+  /* 统计条 */
+  .stats-bar {
+    display: flex; justify-content: center; gap: 32px;
+    margin-bottom: 24px; flex-wrap: wrap;
+  }
+  .stat {
+    text-align: center;
+  }
+  .stat-num {
+    font-size: 22px; font-weight: 700;
+    background: linear-gradient(135deg, #8B5CF6, #06b6d4);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .stat-label {
+    font-size: 11px; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.08em;
   }
 
   .social-links {
-    display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+    display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
   }
 
   .social-links a {
@@ -80,99 +169,155 @@
     padding: 8px 16px;
     background: var(--card-bg); border: 1px solid var(--card-border);
     border-radius: 100px; color: var(--text);
-    text-decoration: none; font-size: 13px; transition: all 0.2s;
+    text-decoration: none; font-size: 13px; font-weight: 500;
+    transition: all 0.2s;
   }
 
   .social-links a:hover {
     background: rgba(139,92,246,0.15);
-    border-color: var(--primary);
+    border-color: rgba(139,92,246,0.5);
     transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(139,92,246,0.2);
   }
 
+  /* 分类标题 */
   .section-title {
     display: flex; align-items: center; gap: 10px;
-    margin: 40px 0 20px; padding-left: 4px;
+    margin: 44px 0 18px; padding-left: 4px;
     font-size: 13px; font-weight: 600;
     text-transform: uppercase; letter-spacing: 0.1em;
     color: var(--text-muted);
   }
 
-  .section-title::after {
-    content: ''; flex: 1; height: 1px;
-    background: var(--card-border);
+  .section-title .emoji {
+    font-size: 16px;
   }
 
+  .section-title::after {
+    content: ''; flex: 1; height: 1px;
+    background: linear-gradient(to right, var(--card-border), transparent);
+  }
+
+  /* 工具卡片网格 */
   .tool-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 14px;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 12px;
   }
 
   .tool-card {
-    background: var(--card-bg); border: 1px solid var(--card-border);
-    border-radius: var(--radius); padding: 18px;
-    text-decoration: none; color: var(--text); transition: all 0.25s;
-    position: relative; overflow: hidden;
-  }
-
-  .tool-card::before {
-    content: ''; position: absolute;
-    top: 0; left: 0; right: 0; height: 2px;
-    background: var(--gradient); opacity: 0; transition: opacity 0.25s;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 16px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
   }
 
   .tool-card:hover {
-    background: rgba(139,92,246,0.08);
-    border-color: rgba(139,92,246,0.3);
-    transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(139,92,246,0.15);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    border-color: rgba(139,92,246,0.4);
   }
 
-  .tool-card:hover::before { opacity: 1; }
+  .tool-card:hover::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(139,92,246,0.05), rgba(236,72,153,0.05));
+    pointer-events: none;
+  }
+
+  /* 每个分类的hover颜色 */
+  .tool-card:hover { border-color: rgba(139,92,246,0.4); }
+  .tool-card.chat:hover { border-color: rgba(139,92,246,0.5); }
+  .tool-card.video:hover { border-color: rgba(236,72,153,0.5); }
+  .tool-card.image:hover { border-color: rgba(245,158,11,0.5); }
+  .tool-card.write:hover { border-color: rgba(16,185,129,0.5); }
+  .tool-card.loop:hover { border-color: rgba(6,182,212,0.5); }
+  .tool-card.coding:hover { border-color: rgba(59,130,246,0.5); }
 
   .tool-icon {
-    width: 40px; height: 40px; border-radius: 10px;
-    background: rgba(139,92,246,0.15);
+    width: 38px; height: 38px; border-radius: 10px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 20px; margin-bottom: 12px;
+    font-size: 18px; margin-bottom: 12px;
+    transition: transform 0.2s;
   }
+  .tool-card:hover .tool-icon { transform: scale(1.1); }
 
-  .tool-name { font-weight: 600; font-size: 14px; margin-bottom: 6px; }
+  .tool-icon.chat { background: rgba(139,92,246,0.2); }
+  .tool-icon.video { background: rgba(236,72,153,0.2); }
+  .tool-icon.image { background: rgba(245,158,11,0.2); }
+  .tool-icon.write { background: rgba(16,185,129,0.2); }
+  .tool-icon.loop { background: rgba(6,182,212,0.2); }
+  .tool-icon.coding { background: rgba(59,130,246,0.2); }
+
+  .tool-name {
+    font-weight: 600; font-size: 14px; margin-bottom: 6px;
+    color: #f1f5f9;
+  }
 
   .tool-desc {
     font-size: 12px; color: var(--text-muted); line-height: 1.5;
   }
 
+  /* CTA */
   .cta {
-    text-align: center; margin-top: 50px; padding: 30px;
-    background: var(--card-bg); border: 1px solid var(--card-border);
-    border-radius: var(--radius);
+    text-align: center;
+    margin-top: 56px;
+    padding: 36px 30px;
+    background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(236,72,153,0.08));
+    border: 1px solid rgba(139,92,246,0.2);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
   }
 
-  .cta p { font-size: 15px; color: var(--text-muted); margin-bottom: 16px; }
+  .cta::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(ellipse at center, rgba(139,92,246,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .cta p {
+    font-size: 15px; color: var(--text-muted); margin-bottom: 16px;
+  }
 
   .cta a {
     display: inline-flex; align-items: center; gap: 8px;
-    padding: 12px 28px;
-    background: var(--gradient); border-radius: 100px;
+    padding: 13px 30px;
+    background: linear-gradient(135deg, #8B5CF6, #7c3aed);
+    border-radius: 100px;
     color: #fff; text-decoration: none; font-weight: 600; font-size: 14px;
     transition: all 0.2s;
+    box-shadow: 0 4px 20px rgba(139,92,246,0.4);
   }
 
   .cta a:hover {
     transform: scale(1.05);
-    box-shadow: 0 8px 30px rgba(139,92,246,0.4);
+    box-shadow: 0 8px 30px rgba(139,92,246,0.5);
   }
 
   footer {
     text-align: center; padding: 30px;
     color: var(--text-muted); font-size: 12px;
+    border-top: 1px solid var(--card-border);
+    margin-top: 40px;
   }
+
+  footer a { color: var(--purple); text-decoration: none; }
 
   @media (max-width: 600px) {
     .tool-grid { grid-template-columns: 1fr 1fr; }
-    .hero { padding: 30px 0 25px; }
-    .hero h1 { font-size: 24px; }
+    .hero { padding: 40px 0 35px; }
+    .hero h1 { font-size: 28px; }
+    .stats-bar { gap: 20px; }
   }
 
   @media (max-width: 380px) {
@@ -182,13 +327,38 @@
 </head>
 <body>
 
+<div class="bg-grid"></div>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
 <div class="container">
 
   <!-- Hero -->
   <section class="hero">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      已收录 35+ 热门AI工具
+    </div>
     <div class="avatar">溪</div>
-    <h1>清溪</h1>
-    <p>AI提效 · 内容操盘手</p>
+    <h1>清溪的AI工具箱</h1>
+    <p>整理全网最实用的 AI 工具，按场景分类，开箱即用</p>
+
+    <div class="stats-bar">
+      <div class="stat">
+        <div class="stat-num">35+</div>
+        <div class="stat-label">收录工具</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">6</div>
+        <div class="stat-label">分类场景</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">免费</div>
+        <div class="stat-label">全部可用</div>
+      </div>
+    </div>
+
     <div class="social-links">
       <a href="https://xhslink.com/m/15zyxo67w0J" target="_blank">📕 小某书</a>
       <a href="https://v.douyin.com/jUdv0B2yNdw/" target="_blank">🎵 某音</a>
@@ -198,172 +368,202 @@
   </section>
 
   <!-- AI对话/助手 -->
-  <div class="section-title">🤖 AI对话助手</div>
+  <div class="section-title"><span class="emoji">🤖</span> AI对话助手</div>
   <div class="tool-grid">
-    <a class="tool-card" href="https://chat.openai.com" target="_blank">
-      <div class="tool-icon">🤖</div>
+    <a class="tool-card chat" href="https://chat.openai.com" target="_blank">
+      <div class="tool-icon chat">🤖</div>
       <div class="tool-name">ChatGPT</div>
       <div class="tool-desc">OpenAI出品，全球最流行AI对话工具，支持多模态</div>
     </a>
-    <a class="tool-card" href="https://claude.ai" target="_blank">
-      <div class="tool-icon">🧠</div>
+    <a class="tool-card chat" href="https://claude.ai" target="_blank">
+      <div class="tool-icon chat">🧠</div>
       <div class="tool-name">Claude</div>
       <div class="tool-desc">Anthropic出品，长文本理解强，适合写作和深度分析</div>
     </a>
-    <a class="tool-card" href="https://gemini.google.com" target="_blank">
-      <div class="tool-icon">✨</div>
+    <a class="tool-card chat" href="https://gemini.google.com" target="_blank">
+      <div class="tool-icon chat">✨</div>
       <div class="tool-name">Gemini</div>
-      <div class="tool-desc">Google出品，免费支持上下文100万token，联网能力强</div>
+      <div class="tool-desc">Google出品，免费100万token上下文，联网能力强</div>
     </a>
-    <a class="tool-card" href="https://cursor.com" target="_blank">
-      <div class="tool-icon">💻</div>
+    <a class="tool-card chat" href="https://www.perplexity.ai" target="_blank">
+      <div class="tool-icon chat">🔍</div>
+      <div class="tool-name">Perplexity</div>
+      <div class="tool-desc">AI搜索引擎，实时联网查资料，回答带来源链接</div>
+    </a>
+    <a class="tool-card coding" href="https://cursor.com" target="_blank">
+      <div class="tool-icon coding">💻</div>
       <div class="tool-name">Cursor</div>
-      <div class="tool-desc">AI代码编辑器，vibe coding神器，改代码直接说话就行</div>
+      <div class="tool-desc">AI代码编辑器，vibe coding神器，改代码直接说话</div>
     </a>
-    <a class="tool-card" href="https://github.com/features/copilot" target="_blank">
-      <div class="tool-icon">⚡</div>
+    <a class="tool-card coding" href="https://github.com/features/copilot" target="_blank">
+      <div class="tool-icon coding">⚡</div>
       <div class="tool-name">Copilot</div>
       <div class="tool-desc">GitHub官方AI编程助手，VS Code里直接用</div>
     </a>
-    <a class="tool-card" href="https://www.perplexity.ai" target="_blank">
-      <div class="tool-icon">🔍</div>
-      <div class="tool-name">Perplexity</div>
-      <div class="tool-desc">AI搜索引擎，实时联网查资料，回答带来源链接</div>
+  </div>
+
+  <!-- AI网站/应用构建 -->
+  <div class="section-title"><span class="emoji">🌐</span> AI网站与应用构建</div>
+  <div class="tool-grid">
+    <a class="tool-card coding" href="https://bolt.new" target="_blank">
+      <div class="tool-icon coding">⚡</div>
+      <div class="tool-name">Bolt.new</div>
+      <div class="tool-desc">浏览器里喊句话就能出完整项目，可直接部署</div>
+    </a>
+    <a class="tool-card coding" href="https://v0.dev" target="_blank">
+      <div class="tool-icon coding">🎯</div>
+      <div class="tool-name">v0</div>
+      <div class="tool-desc">Vercel出品，AI生成Next.js界面，UI质量高</div>
+    </a>
+    <a class="tool-card coding" href="https://lovable.dev" target="_blank">
+      <div class="tool-icon coding">💛</div>
+      <div class="tool-name">Lovable</div>
+      <div class="tool-desc">Idea到App几秒完成，全栈工程师级别输出</div>
+    </a>
+    <a class="tool-card coding" href="https://windsurf.com" target="_blank">
+      <div class="tool-icon coding">🌊</div>
+      <div class="tool-name">Windsurf</div>
+      <div class="tool-desc">Agentic IDE，多步代码任务自动完成</div>
+    </a>
+    <a class="tool-card chat" href="https://www.notion.so" target="_blank">
+      <div class="tool-icon chat">📝</div>
+      <div class="tool-name">Notion</div>
+      <div class="tool-desc">笔记+AI+数据库，知识管理一体化</div>
+    </a>
+    <a class="tool-card coding" href="https://replit.com" target="_blank">
+      <div class="tool-icon coding">🚀</div>
+      <div class="tool-name">Replit</div>
+      <div class="tool-desc">浏览器里写代码/跑项目/部署，全流程覆盖</div>
     </a>
   </div>
 
   <!-- AI视频 -->
-  <div class="section-title">🎬 AI视频</div>
+  <div class="section-title"><span class="emoji">🎬</span> AI视频</div>
   <div class="tool-grid">
-    <a class="tool-card" href="https://runwayml.com" target="_blank">
-      <div class="tool-icon">🎥</div>
+    <a class="tool-card video" href="https://runwayml.com" target="_blank">
+      <div class="tool-icon video">🎥</div>
       <div class="tool-name">Runway</div>
       <div class="tool-desc">AI视频生成鼻祖，Gen-3效果惊艳，影视级输出</div>
     </a>
-    <a class="tool-card" href="https://pika.art" target="_blank">
-      <div class="tool-icon">🎬</div>
+    <a class="tool-card video" href="https://pika.art" target="_blank">
+      <div class="tool-icon video">🎬</div>
       <div class="tool-name">Pika</div>
       <div class="tool-desc">文字转视频新秀，操作简单，生成速度快</div>
     </a>
-    <a class="tool-card" href="https://klingai.com" target="_blank">
-      <div class="tool-icon">🐉</div>
+    <a class="tool-card video" href="https://klingai.com" target="_blank">
+      <div class="tool-icon video">🐉</div>
       <div class="tool-name">可灵 AI</div>
       <div class="tool-desc">快手出品，国产视频生成顶流，支持3D场景</div>
     </a>
-    <a class="tool-card" href="https://hailuoai.video" target="_blank">
-      <div class="tool-icon">🌪️</div>
+    <a class="tool-card video" href="https://hailuoai.video" target="_blank">
+      <div class="tool-icon video">🌪️</div>
       <div class="tool-name">海螺AI</div>
       <div class="tool-desc">字节跳动出品，画面质量高，国产视频AI新势力</div>
     </a>
-    <a class="tool-card" href="https://www.sora.com" target="_blank">
-      <div class="tool-icon">🌊</div>
+    <a class="tool-card video" href="https://www.sora.com" target="_blank">
+      <div class="tool-icon video">🌊</div>
       <div class="tool-name">Sora</div>
       <div class="tool-desc">OpenAI视频生成模型，文本转视频效果逼真</div>
     </a>
-    <a class="tool-card" href="https://visen.ai" target="_blank">
-      <div class="tool-icon">🎞️</div>
+    <a class="tool-card video" href="https://visen.ai" target="_blank">
+      <div class="tool-icon video">🎞️</div>
       <div class="tool-name">Viggle</div>
-      <div class="tool-desc">AI角色动画，让图片里的人动起来，支持动作控制</div>
+      <div class="tool-desc">AI角色动画，让图片里的人动起来</div>
     </a>
   </div>
 
   <!-- AI图片 -->
-  <div class="section-title">🖼️ AI图片</div>
+  <div class="section-title"><span class="emoji">🖼️</span> AI图片</div>
   <div class="tool-grid">
-    <a class="tool-card" href="https://midjourney.com" target="_blank">
-      <div class="tool-icon">🎨</div>
+    <a class="tool-card image" href="https://midjourney.com" target="_blank">
+      <div class="tool-icon image">🎨</div>
       <div class="tool-name">Midjourney</div>
       <div class="tool-desc">图片生成天花板，艺术感强，Discord里喊话出图</div>
     </a>
-    <a class="tool-card" href="https://openai.com/index/dall-e-3" target="_blank">
-      <div class="tool-icon">🖌️</div>
+    <a class="tool-card image" href="https://openai.com/index/dall-e-3" target="_blank">
+      <div class="tool-icon image">🖌️</div>
       <div class="tool-name">DALL·E 3</div>
       <div class="tool-desc">OpenAI图片模型，理解指令强，ChatGPT里直接用</div>
     </a>
-    <a class="tool-card" href="https://www.stable-diffusion.cc" target="_blank">
-      <div class="tool-icon">🌌</div>
-      <div class="tool-name">Stable Diffusion</div>
-      <div class="tool-desc">开源免费可本地跑，模型丰富，AI图片鼻祖级工具</div>
+    <a class="tool-card image" href="https://ideogram.ai" target="_blank">
+      <div class="tool-icon image">✨</div>
+      <div class="tool-name">Ideogram</div>
+      <div class="tool-desc">文字生成图片神器，在图片里生成准确文字</div>
     </a>
-    <a class="tool-card" href="https://tongyi.aliyun.com/wanxiangan" target="_blank">
-      <div class="tool-icon">🖼️</div>
+    <a class="tool-card image" href="https://www.recraft.ai" target="_blank">
+      <div class="tool-icon image">🎯</div>
+      <div class="tool-name">Recraft</div>
+      <div class="tool-desc">AI图片+矢量图，可生成SVG格式，设计友好</div>
+    </a>
+    <a class="tool-card image" href="https://tongyi.aliyun.com/wanxiangan" target="_blank">
+      <div class="tool-icon image">🖼️</div>
       <div class="tool-name">通义万相</div>
       <div class="tool-desc">阿里出品，国产图片生成，支持中文提示词</div>
     </a>
-    <a class="tool-card" href="https://ideogram.ai" target="_blank">
-      <div class="tool-icon">✨</div>
-      <div class="tool-name">Ideogram</div>
-      <div class="tool-desc">文字生成图片神器，在图片里生成准确文字，效果惊艳</div>
+    <a class="tool-card image" href="https://www.stable-diffusion.cc" target="_blank">
+      <div class="tool-icon image">🌌</div>
+      <div class="tool-name">Stable Diffusion</div>
+      <div class="tool-desc">开源免费可本地跑，模型丰富，AI图片鼻祖</div>
     </a>
-    <a class="tool-card" href="https://www.recraft.ai" target="_blank">
-      <div class="tool-icon">🎯</div>
-      <div class="tool-name">Recraft</div>
-      <div class="tool-desc">AI图片生成+矢量图，可生成SVG格式，设计友好</div>
+  </div>
+
+  <!-- AI效率工具 -->
+  <div class="section-title"><span class="emoji">⚡</span> AI效率与自动化</div>
+  <div class="tool-grid">
+    <a class="tool-card loop" href="https://n8n.io" target="_blank">
+      <div class="tool-icon loop">🔗</div>
+      <div class="tool-name">n8n</div>
+      <div class="tool-desc">开源工作流自动化，可自托管，高度可定制</div>
+    </a>
+    <a class="tool-card loop" href="https://www.make.com" target="_blank">
+      <div class="tool-icon loop">🔧</div>
+      <div class="tool-name">Make</div>
+      <div class="tool-desc">可视化工作流自动化，比Zapier更灵活</div>
+    </a>
+    <a class="tool-card loop" href="https://zapier.com" target="_blank">
+      <div class="tool-icon loop">⚡</div>
+      <div class="tool-name">Zapier</div>
+      <div class="tool-desc">无代码自动化，连8000+应用，让AI替你干活</div>
+    </a>
+    <a class="tool-card coding" href="https://www.raycast.com" target="_blank">
+      <div class="tool-icon coding">🚀</div>
+      <div class="tool-name">Raycast</div>
+      <div class="tool-desc">Mac最强效率工具，AI加持后堪称终极启动器</div>
+    </a>
+    <a class="tool-card coding" href="https://openinterpreter.com" target="_blank">
+      <div class="tool-icon coding">🖥️</div>
+      <div class="tool-name">Open Interpreter</div>
+      <div class="tool-desc">在终端里用AI控制电脑，自动化本地所有任务</div>
+    </a>
+    <a class="tool-card loop" href="https://www.jianying.com" target="_blank">
+      <div class="tool-icon loop">🎬</div>
+      <div class="tool-name">剪映</div>
+      <div class="tool-desc">字节出品，AI脚本/配音/字幕，视频创作者必备</div>
     </a>
   </div>
 
   <!-- AI写作 -->
-  <div class="section-title">✍️ AI写作</div>
+  <div class="section-title"><span class="emoji">✍️</span> AI写作与内容创作</div>
   <div class="tool-grid">
-    <a class="tool-card" href="https://notion.so" target="_blank">
-      <div class="tool-icon">📝</div>
-      <div class="tool-name">Notion AI</div>
-      <div class="tool-desc">笔记+AI，写文章/总结/头脑风暴一体化</div>
-    </a>
-    <a class="tool-card" href="https://xiezuocat.com" target="_blank">
-      <div class="tool-icon">🐱</div>
+    <a class="tool-card write" href="https://xiezuocat.com" target="_blank">
+      <div class="tool-icon write">🐱</div>
       <div class="tool-name">秘塔写作猫</div>
       <div class="tool-desc">国产AI写作助手，纠错、改写、润色全搞定</div>
     </a>
-    <a class="tool-card" href="https://iflyrec.com" target="_blank">
-      <div class="tool-icon">🎙️</div>
+    <a class="tool-card write" href="https://iflyrec.com" target="_blank">
+      <div class="tool-icon write">🎙️</div>
       <div class="tool-name">讯飞语记</div>
       <div class="tool-desc">语音转文字+AI改写，口播脚本神器</div>
     </a>
-    <a class="tool-card" href="https://www.jianying.com" target="_blank">
-      <div class="tool-icon">🎬</div>
-      <div class="tool-name">剪映</div>
-      <div class="tool-desc">字节出品，AI脚本/配音/字幕，视频创作者必备</div>
-    </a>
-    <a class="tool-card" href="https://zenvideo.qq.com" target="_blank">
-      <div class="tool-icon">📄</div>
+    <a class="tool-card write" href="https://zenvideo.qq.com" target="_blank">
+      <div class="tool-icon write">📄</div>
       <div class="tool-name">腾讯智影</div>
       <div class="tool-desc">腾讯出品，AI写稿/配音/数字人，一站式视频创作</div>
     </a>
-  </div>
-
-  <!-- AI效率 -->
-  <div class="section-title">⚡ AI效率工具</div>
-  <div class="tool-grid">
-    <a class="tool-card" href="https://zapier.com" target="_blank">
-      <div class="tool-icon">⚡</div>
-      <div class="tool-name">Zapier</div>
-      <div class="tool-desc">无代码自动化，连8000+应用，让AI替你干活</div>
-    </a>
-    <a class="tool-card" href="https://www.make.com" target="_blank">
-      <div class="tool-icon">🔧</div>
-      <div class="tool-name">Make</div>
-      <div class="tool-desc">可视化工作流自动化，比Zapier更灵活，免费额度大</div>
-    </a>
-    <a class="tool-card" href="https://n8n.io" target="_blank">
-      <div class="tool-icon">🔗</div>
-      <div class="tool-name">n8n</div>
-      <div class="tool-desc">开源工作流自动化，可自托管，高度可定制</div>
-    </a>
-    <a class="tool-card" href="https://www.raycast.com" target="_blank">
-      <div class="tool-icon">🚀</div>
-      <div class="tool-name">Raycast</div>
-      <div class="tool-desc">Mac最强效率工具，AI加持后堪称终极启动器</div>
-    </a>
-    <a class="tool-card" href="https://openinterpreter.com" target="_blank">
-      <div class="tool-icon">🖥️</div>
-      <div class="tool-name">Open Interpreter</div>
-      <div class="tool-desc">在终端里用AI控制电脑，自动化本地所有任务</div>
-    </a>
-    <a class="tool-card" href="https://www.ripgrep.org" target="_blank">
-      <div class="tool-icon">🔎</div>
-      <div class="tool-name">OpenHands</div>
-      <div class="tool-desc">AI智能体，在浏览器里自动化完成复杂任务</div>
+    <a class="tool-card chat" href="https://www.coze.cn" target="_blank">
+      <div class="tool-icon chat">🤖</div>
+      <div class="tool-name">Coze</div>
+      <div class="tool-desc">字节出品，AI Bot开发平台，支持小红书/抖音发布</div>
     </a>
   </div>
 
@@ -376,7 +576,8 @@
   </div>
 
   <footer>
-    © 2026 清溪的AI工具箱 · 用Cursor + vibe coding建成
+    © 2026 清溪的AI工具箱 · 用Cursor + Vibe Coding建成<br>
+    <a href="https://qingxi-ai-toolbox.vercel.app" target="_blank">qingxi-ai-toolbox.vercel.app</a>
   </footer>
 
 </div>
