@@ -42,232 +42,88 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* 导航栏 */
   .topbar {
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    position: sticky; top: 0; z-index: 100;
     background: rgba(255,255,255,0.92);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
-    padding: 0 24px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    padding: 0 24px; height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
   }
 
   .topbar-logo {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--text);
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    font-size: 16px; font-weight: 700; color: var(--text);
+    display: flex; align-items: center; gap: 8px;
   }
 
   .topbar-logo .logo-icon {
     width: 28px; height: 28px;
     background: linear-gradient(135deg, #7c3aed, #ec4899);
     border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 14px;
+    display: flex; align-items: center; justify-content: center; font-size: 14px;
   }
 
-  .topbar-links {
-    display: flex; gap: 6px;
-  }
-
+  .topbar-links { display: flex; gap: 6px; }
   .topbar-links a {
     display: flex; align-items: center; gap: 5px;
-    padding: 6px 12px;
-    border-radius: 8px;
-    font-size: 13px;
-    font-weight: 500;
-    text-decoration: none;
-    color: var(--text-2);
-    transition: all 0.15s;
+    padding: 6px 12px; border-radius: 8px;
+    font-size: 13px; font-weight: 500; text-decoration: none;
+    color: var(--text-2); transition: all 0.15s;
   }
+  .topbar-links a:hover { background: var(--bg-card); color: var(--text); }
 
-  .topbar-links a:hover {
-    background: var(--bg-card);
-    color: var(--text);
-  }
+  .container { max-width: 900px; margin: 0 auto; padding: 0 20px 60px; }
 
-  .container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 20px 60px;
-  }
-
-  /* Hero */
-  .hero {
-    text-align: center;
-    padding: 64px 0 48px;
-  }
+  .hero { text-align: center; padding: 64px 0 48px; }
 
   .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
+    display: inline-flex; align-items: center; gap: 6px;
     padding: 5px 12px;
-    background: var(--accent-bg);
-    border: 1px solid rgba(124,58,237,0.15);
-    border-radius: 100px;
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--accent);
-    margin-bottom: 24px;
-    letter-spacing: 0.02em;
+    background: var(--accent-bg); border: 1px solid rgba(124,58,237,0.15);
+    border-radius: 100px; font-size: 12px; font-weight: 600;
+    color: var(--accent); margin-bottom: 24px; letter-spacing: 0.02em;
   }
 
   .hero h1 {
-    font-size: 44px;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    color: var(--text);
-    margin-bottom: 12px;
-    line-height: 1.15;
+    font-size: 44px; font-weight: 800; letter-spacing: -0.03em;
+    color: var(--text); margin-bottom: 12px; line-height: 1.15;
   }
-
   .hero h1 span {
     background: linear-gradient(135deg, #7c3aed, #ec4899);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   }
 
-  .hero p {
-    font-size: 18px;
-    color: var(--text-2);
-    max-width: 520px;
-    margin: 0 auto 28px;
-    line-height: 1.65;
-  }
+  .hero p { font-size: 18px; color: var(--text-2); max-width: 520px; margin: 0 auto 28px; line-height: 1.65; }
 
-  .hero-social {
-    display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;
-    margin-bottom: 36px;
-  }
-
+  .hero-social { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 36px; }
   .hero-social a {
     display: inline-flex; align-items: center; gap: 6px;
     padding: 9px 18px;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    font-size: 13px; font-weight: 500;
-    color: var(--text);
-    text-decoration: none;
-    transition: all 0.15s;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 10px; font-size: 13px; font-weight: 500;
+    color: var(--text); text-decoration: none; transition: all 0.15s;
   }
+  .hero-social a:hover { border-color: var(--accent); color: var(--accent); box-shadow: var(--shadow-md); transform: translateY(-1px); }
 
-  .hero-social a:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-1px);
-  }
-
-  /* 统计 */
-  .stats {
-    display: flex; justify-content: center; gap: 40px;
-    padding-top: 36px;
-    border-top: 1px solid var(--border);
-  }
-
+  .stats { display: flex; justify-content: center; gap: 40px; padding-top: 36px; border-top: 1px solid var(--border); }
   .stat-item { text-align: center; }
-  .stat-num {
-    font-size: 26px; font-weight: 800;
-    color: var(--text);
-    letter-spacing: -0.02em;
-  }
-  .stat-label {
-    font-size: 12px; color: var(--text-3);
-    margin-top: 2px;
-  }
+  .stat-num { font-size: 26px; font-weight: 800; color: var(--text); letter-spacing: -0.02em; }
+  .stat-label { font-size: 12px; color: var(--text-3); margin-top: 2px; }
 
-  /* ========== 我的日用清单 ========== */
-  .my-stack {
-    background: linear-gradient(135deg, #f5f3ff 0%, #fdf2f8 100%);
-    border: 1px solid rgba(124,58,237,0.12);
-    border-radius: 20px;
-    padding: 32px;
-    margin-top: 48px;
+  /* ===== 卡片基础 ===== */
+  .tool-card {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 13px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: var(--radius);
+    text-decoration: none; color: var(--text); transition: all 0.18s;
   }
+  .tool-card:hover { box-shadow: var(--shadow-md); border-color: #d1d5db; transform: translateY(-2px); }
 
-  .my-stack-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
+  .tool-icon {
+    width: 34px; height: 34px; flex-shrink: 0; border-radius: 9px;
+    display: flex; align-items: center; justify-content: center; font-size: 15px;
   }
-
-  .my-stack-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 4px 12px;
-    background: rgba(124,58,237,0.10);
-    border: 1px solid rgba(124,58,237,0.2);
-    border-radius: 100px;
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  .my-stack-title {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--text);
-  }
-
-  .my-stack-desc {
-    font-size: 13px;
-    color: var(--text-2);
-    margin-bottom: 20px;
-  }
-
-  .stack-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 12px;
-  }
-
-  .stack-card {
-    background: #fff;
-    border: 1px solid rgba(124,58,237,0.15);
-    border-radius: 12px;
-    padding: 16px;
-    transition: all 0.18s;
-    text-decoration: none;
-    color: var(--text);
-    display: block;
-  }
-
-  .stack-card:hover {
-    border-color: var(--accent);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
-  }
-
-  .stack-card-top {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-  }
-
-  .stack-icon {
-    width: 36px; height: 36px; flex-shrink: 0;
-    border-radius: 9px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 16px;
-  }
-
   .icon-purple { background: rgba(124,58,237,0.10); }
   .icon-blue { background: rgba(37,99,235,0.10); }
   .icon-pink { background: rgba(236,72,153,0.10); }
@@ -275,108 +131,18 @@
   .icon-cyan { background: rgba(8,145,178,0.10); }
   .icon-green { background: rgba(5,150,105,0.10); }
 
-  .stack-name {
-    font-size: 14px; font-weight: 600;
-    color: var(--text);
-  }
+  .tool-body { flex: 1; min-width: 0; }
+  .tool-top { display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-bottom: 2px; }
+  .tool-name-row { display: flex; align-items: center; gap: 5px; flex: 1; min-width: 0; }
+  .tool-name { font-size: 13px; font-weight: 600; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .price-tag { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 100px; flex-shrink: 0; }
+  .price-free { background: rgba(5,150,105,0.10); color: #059669; }
+  .price-paid { background: rgba(217,119,6,0.10); color: #d97706; }
+  .price-freemium { background: rgba(37,99,235,0.10); color: #2563eb; }
+  .tool-desc { font-size: 11px; color: var(--text-3); line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .tool-stars { font-size: 11px; color: #d97706; margin-top: 3px; }
+  .tool-use { font-size: 11px; color: var(--text-2); line-height: 1.4; margin-top: 4px; }
 
-  .stack-use {
-    font-size: 12px;
-    color: var(--text-2);
-    line-height: 1.5;
-    margin-bottom: 8px;
-  }
-
-  .stack-stars {
-    font-size: 11px;
-    color: var(--orange);
-    font-weight: 600;
-  }
-
-  /* ========== 全部工具 ========== */
-  .section-title {
-    display: flex; align-items: center; gap: 10px;
-    margin: 52px 0 18px;
-    padding-top: 8px;
-  }
-
-  .section-title .emoji { font-size: 18px; }
-
-  .section-title .label {
-    font-size: 13px; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.08em;
-    color: var(--text-2);
-  }
-
-  .section-title .count {
-    font-size: 11px; font-weight: 600;
-    padding: 2px 8px;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: 100px;
-    color: var(--text-3);
-    margin-left: 4px;
-  }
-
-  .section-title::after {
-    content: ''; flex: 1; height: 1px;
-    background: var(--border);
-    margin-left: 12px;
-  }
-
-  /* 工具卡片 */
-  .tool-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 10px;
-  }
-
-  .tool-card {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 14px;
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    text-decoration: none;
-    color: var(--text);
-    transition: all 0.18s;
-    cursor: pointer;
-  }
-
-  .tool-card:hover {
-    box-shadow: var(--shadow-md);
-    border-color: #d1d5db;
-    transform: translateY(-2px);
-  }
-
-  .tool-icon {
-    width: 36px; height: 36px; flex-shrink: 0;
-    border-radius: 9px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 16px;
-  }
-
-  .tool-content { flex: 1; min-width: 0; }
-
-  .tool-name {
-    font-size: 13px; font-weight: 600;
-    color: var(--text);
-    margin-bottom: 3px;
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  }
-
-  .tool-desc {
-    font-size: 11px; color: var(--text-3);
-    line-height: 1.45;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  /* 分类hover图标高亮 */
   .tool-card:hover .icon-purple { background: rgba(124,58,237,0.18); }
   .tool-card:hover .icon-blue { background: rgba(37,99,235,0.18); }
   .tool-card:hover .icon-pink { background: rgba(236,72,153,0.18); }
@@ -384,73 +150,82 @@
   .tool-card:hover .icon-cyan { background: rgba(8,145,178,0.18); }
   .tool-card:hover .icon-green { background: rgba(5,150,105,0.18); }
 
-  /* CTA */
-  .cta-section {
-    text-align: center;
-    margin-top: 60px;
-    padding: 40px;
+  /* ===== 我的日用清单 ===== */
+  .my-stack {
     background: linear-gradient(135deg, #f5f3ff 0%, #fdf2f8 100%);
-    border: 1px solid rgba(124,58,237,0.12);
-    border-radius: 20px;
+    border: 1px solid rgba(124,58,237,0.12); border-radius: 20px;
+    padding: 32px; margin-top: 48px;
   }
-
-  .cta-section p {
-    font-size: 16px; color: var(--text-2);
-    margin-bottom: 16px;
+  .my-stack-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+  .my-stack-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 12px;
+    background: rgba(124,58,237,0.10); border: 1px solid rgba(124,58,237,0.2);
+    border-radius: 100px; font-size: 11px; font-weight: 700;
+    color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em;
   }
+  .my-stack-title { font-size: 20px; font-weight: 700; color: var(--text); }
+  .my-stack-desc { font-size: 13px; color: var(--text-2); margin-bottom: 20px; }
+  .stack-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; }
 
-  .cta-btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 12px 28px;
-    background: linear-gradient(135deg, #7c3aed, #6d28d9);
-    border-radius: 10px;
-    color: #fff; text-decoration: none;
-    font-weight: 600; font-size: 14px;
-    box-shadow: 0 4px 14px rgba(124,58,237,0.35);
-    transition: all 0.15s;
+  .stack-card {
+    background: #fff; border: 1px solid rgba(124,58,237,0.15);
+    border-radius: 12px; padding: 14px; transition: all 0.18s;
+    text-decoration: none; color: var(--text); display: block;
   }
+  .stack-card:hover { border-color: var(--accent); box-shadow: var(--shadow-md); transform: translateY(-2px); }
 
-  .cta-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(124,58,237,0.45);
+  /* ===== 我用AI做了什么 ===== */
+  .my-works {
+    background: linear-gradient(135deg, #f0f9ff 0%, #fdf4ff 100%);
+    border: 1px solid rgba(37,99,235,0.12); border-radius: 20px;
+    padding: 32px; margin-top: 40px;
   }
-
-  /* footer */
-  footer {
-    text-align: center;
-    padding: 32px 20px;
-    border-top: 1px solid var(--border);
-    margin-top: 40px;
-    color: var(--text-3);
-    font-size: 12px;
+  .my-works-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+  .my-works-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 12px;
+    background: rgba(37,99,235,0.10); border: 1px solid rgba(37,99,235,0.2);
+    border-radius: 100px; font-size: 11px; font-weight: 700;
+    color: #2563eb; text-transform: uppercase; letter-spacing: 0.08em;
   }
+  .my-works-title { font-size: 20px; font-weight: 700; color: var(--text); }
+  .my-works-desc { font-size: 13px; color: var(--text-2); margin-bottom: 20px; }
+  .works-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
 
+  /* ===== 分类标题 ===== */
+  .section-title { display: flex; align-items: center; gap: 10px; margin: 48px 0 16px; padding-top: 8px; }
+  .section-title .emoji { font-size: 18px; }
+  .section-title .label { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-2); }
+  .section-title .count { font-size: 11px; font-weight: 600; padding: 2px 8px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 100px; color: var(--text-3); margin-left: 4px; }
+  .section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); margin-left: 12px; }
+
+  .tool-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; }
+
+  /* ===== CTA ===== */
+  .cta-section { text-align: center; margin-top: 60px; padding: 40px; background: linear-gradient(135deg, #f5f3ff 0%, #fdf2f8 100%); border: 1px solid rgba(124,58,237,0.12); border-radius: 20px; }
+  .cta-section p { font-size: 16px; color: var(--text-2); margin-bottom: 16px; }
+  .cta-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; background: linear-gradient(135deg, #7c3aed, #6d28d9); border-radius: 10px; color: #fff; text-decoration: none; font-weight: 600; font-size: 14px; box-shadow: 0 4px 14px rgba(124,58,237,0.35); transition: all 0.15s; }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(124,58,237,0.45); }
+
+  footer { text-align: center; padding: 32px 20px; border-top: 1px solid var(--border); margin-top: 40px; color: var(--text-3); font-size: 12px; }
   footer a { color: var(--accent); text-decoration: none; }
 
   @media (max-width: 600px) {
-    .hero h1 { font-size: 32px; }
-    .hero p { font-size: 16px; }
-    .stats { gap: 24px; }
-    .stack-grid { grid-template-columns: 1fr 1fr; }
-    .tool-grid { grid-template-columns: 1fr 1fr; }
-    .topbar-links { display: none; }
-    .my-stack { padding: 24px 20px; }
+    .hero h1 { font-size: 32px; } .hero p { font-size: 16px; } .stats { gap: 24px; }
+    .stack-grid { grid-template-columns: 1fr 1fr; } .works-grid { grid-template-columns: 1fr 1fr; }
+    .tool-grid { grid-template-columns: 1fr 1fr; } .topbar-links { display: none; }
+    .my-stack { padding: 24px 20px; } .my-works { padding: 24px 20px; }
   }
-
   @media (max-width: 380px) {
-    .stack-grid { grid-template-columns: 1fr; }
-    .tool-grid { grid-template-columns: 1fr; }
+    .stack-grid { grid-template-columns: 1fr; } .works-grid { grid-template-columns: 1fr; } .tool-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 
-<!-- 导航栏 -->
 <header class="topbar">
-  <div class="topbar-logo">
-    <div class="logo-icon">🧠</div>
-    清溪的AI工具箱
-  </div>
+  <div class="topbar-logo"><div class="logo-icon">🧠</div>清溪的AI工具箱</div>
   <nav class="topbar-links">
     <a href="https://xhslink.com/m/15zyxo67w0J" target="_blank">📕 小某书</a>
     <a href="https://v.douyin.com/jUdv0B2yNdw/" target="_blank">🎵 某音</a>
@@ -461,7 +236,6 @@
 
 <div class="container">
 
-  <!-- Hero -->
   <section class="hero">
     <div class="hero-badge">✦ 已收录 30+ 热门AI工具</div>
     <h1>清溪的<span>AI工具箱</span></h1>
@@ -473,477 +247,601 @@
       <a href="weixin://dl/chat/qingxi20250501">💬 联系我</a>
     </div>
     <div class="stats">
-      <div class="stat-item">
-        <div class="stat-num">30+</div>
-        <div class="stat-label">收录工具</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">6</div>
-        <div class="stat-label">分类场景</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">免费</div>
-        <div class="stat-label">全部可用</div>
-      </div>
+      <div class="stat-item"><div class="stat-num">30+</div><div class="stat-label">收录工具</div></div>
+      <div class="stat-item"><div class="stat-num">6</div><div class="stat-label">分类场景</div></div>
+      <div class="stat-item"><div class="stat-num">免费</div><div class="stat-label">大部分可用</div></div>
     </div>
   </section>
 
-  <!-- ========== 清溪推荐：我的日用清单 ========== -->
+  <!-- ===== 我的日用清单 ===== -->
   <section class="my-stack">
     <div class="my-stack-header">
       <div class="my-stack-badge">⭐ 清溪推荐</div>
       <div class="my-stack-title">我的AI装备</div>
     </div>
     <p class="my-stack-desc">不是我收藏最多的，是我每天都在用的 · 每个都经过真实使用验证</p>
-
     <div class="stack-grid">
-      <!-- Claude Code -->
       <a class="stack-card" href="https://claude.ai" target="_blank">
-        <div class="stack-card-top">
-          <div class="stack-icon icon-purple">🤖</div>
-          <div class="stack-name">Claude Code</div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <div class="tool-icon icon-purple" style="width:34px;height:34px;">🤖</div>
+          <div>
+            <div class="tool-name">Claude Code</div>
+            <div class="tool-stars">⭐⭐⭐⭐⭐</div>
+          </div>
         </div>
-        <div class="stack-use">终端里的AI编程助手 · 用自然语言写代码、自动化任务</div>
-        <div class="stack-stars">⭐⭐⭐⭐⭐</div>
+        <div class="tool-use">终端里的AI编程助手 · 用自然语言写代码、自动化任务</div>
       </a>
-
-      <!-- Gemini + Nano Banana -->
       <a class="stack-card" href="https://gemini.google.com" target="_blank">
-        <div class="stack-card-top">
-          <div class="stack-icon icon-blue">✨</div>
-          <div class="stack-name">Gemini</div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <div class="tool-icon icon-blue" style="width:34px;height:34px;">✨</div>
+          <div>
+            <div class="tool-name">Gemini</div>
+            <div class="tool-stars">⭐⭐⭐⭐⭐</div>
+          </div>
         </div>
-        <div class="stack-use">Google最强AI · Nano Banana生成图片，百万token上下文</div>
-        <div class="stack-stars">⭐⭐⭐⭐⭐</div>
+        <div class="tool-use">Google最强AI · Nano Banana生成图片，百万token上下文</div>
       </a>
-
-      <!-- 豆包 -->
       <a class="stack-card" href="https://www.doubao.com" target="_blank">
-        <div class="stack-card-top">
-          <div class="stack-icon icon-orange">🫛</div>
-          <div class="stack-name">豆包</div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <div class="tool-icon icon-orange" style="width:34px;height:34px;">🫛</div>
+          <div>
+            <div class="tool-name">豆包</div>
+            <div class="tool-stars">⭐⭐⭐⭐⭐</div>
+          </div>
         </div>
-        <div class="stack-use">字节AI助手 · 中文理解强，免费使用，陪我做内容策划</div>
-        <div class="stack-stars">⭐⭐⭐⭐⭐</div>
+        <div class="tool-use">字节AI助手 · 中文理解强，免费使用，陪我做内容策划</div>
       </a>
-
-      <!-- Nano Banana -->
       <a class="stack-card" href="https://gemini.google.com" target="_blank">
-        <div class="stack-card-top">
-          <div class="stack-icon icon-cyan">🍌</div>
-          <div class="stack-name">Nano Banana</div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <div class="tool-icon icon-cyan" style="width:34px;height:34px;">🍌</div>
+          <div>
+            <div class="tool-name">Nano Banana</div>
+            <div class="tool-stars">⭐⭐⭐⭐⭐</div>
+          </div>
         </div>
-        <div class="stack-use">Gemini内置AI绘图 · 输入文字生成精美图片，完全免费</div>
-        <div class="stack-stars">⭐⭐⭐⭐⭐</div>
+        <div class="tool-use">Gemini内置AI绘图 · 输入文字生成精美图片，完全免费</div>
       </a>
     </div>
   </section>
 
-  <!-- ========== 我用AI做了什么 ========== -->
-  <section class="my-stack" style="background: linear-gradient(135deg, #f0f9ff 0%, #fdf4ff 100%); border-color: rgba(37,99,235,0.12);">
-    <div class="my-stack-header">
-      <div class="my-stack-badge" style="background:rgba(37,99,235,0.10); border-color:rgba(37,99,235,0.2); color: #2563eb;">🏗️</div>
-      <div class="my-stack-title">我用AI做了什么</div>
+  <!-- ===== 我用AI做了什么 ===== -->
+  <section class="my-works">
+    <div class="my-works-header">
+      <div class="my-works-badge">🏗️ 我用AI做了什么</div>
+      <div class="my-works-title">我的AI作品</div>
     </div>
-    <p class="my-stack-desc">这是我用这些工具真实做过的项目/作品 · 点击可跳转到工具</p>
-
-    <div class="stack-grid">
-      <!-- Claude Code -->
-      <a class="stack-card" href="https://claude.ai" target="_blank" style="border-color: rgba(124,58,237,0.15);">
-        <div class="stack-card-top">
-          <div class="stack-icon icon-purple">🤖</div>
-          <div class="stack-name">Claude Code</div>
+    <p class="my-works-desc">这是我用这些工具真实做过的项目/作品 · 点击可跳转到工具</p>
+    <div class="works-grid">
+      <a class="stack-card" href="https://claude.ai" target="_blank" style="border-color:rgba(124,58,237,0.15);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+          <div class="tool-icon icon-purple" style="width:32px;height:32px;">🤖</div>
+          <div>
+            <div class="tool-name">Claude Code</div>
+            <div class="tool-stars">⭐⭐⭐⭐⭐</div>
+          </div>
         </div>
-        <div class="stack-use" style="font-size:11px; color:var(--text-2);">💬 待填充：你在Claude Code里做过什么项目？</div>
-        <div class="stack-stars">⭐⭐⭐⭐⭐</div>
+        <div class="tool-use" style="font-size:11px;">💬 待填充：用它做过什么？</div>
       </a>
-
-      <!-- Codex / Copilot -->
-      <a class="stack-card" href="https://github.com/features/copilot" target="_blank" style="border-color: rgba(37,99,235,0.15);">
-        <div class="stack-card-top">
-          <div class="stack-icon icon-blue">⚡</div>
-          <div class="stack-name">Codex / Copilot</div>
+      <a class="stack-card" href="https://github.com/features/copilot" target="_blank" style="border-color:rgba(37,99,235,0.15);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+          <div class="tool-icon icon-blue" style="width:32px;height:32px;">⚡</div>
+          <div>
+            <div class="tool-name">Codex / Copilot</div>
+            <div class="tool-stars">⭐⭐⭐⭐⭐</div>
+          </div>
         </div>
-        <div class="stack-use" style="font-size:11px; color:var(--text-2);">💬 待填充：你在Copilot里写过什么代码项目？</div>
-        <div class="stack-stars">⭐⭐⭐⭐⭐</div>
+        <div class="tool-use" style="font-size:11px;">💬 待填充：用它做过什么？</div>
       </a>
-
-      <!-- ChatGPT -->
-      <a class="stack-card" href="https://chat.openai.com" target="_blank" style="border-color: rgba(37,99,235,0.15);">
-        <div class="stack-card-top">
-          <div class="stack-icon icon-blue">🤖</div>
-          <div class="stack-name">ChatGPT</div>
+      <a class="stack-card" href="https://chat.openai.com" target="_blank" style="border-color:rgba(37,99,235,0.15);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+          <div class="tool-icon icon-blue" style="width:32px;height:32px;">🤖</div>
+          <div>
+            <div class="tool-name">ChatGPT</div>
+            <div class="tool-stars">⭐⭐⭐⭐⭐</div>
+          </div>
         </div>
-        <div class="stack-use" style="font-size:11px; color:var(--text-2);">💬 待填充：你在ChatGPT里做过什么？</div>
-        <div class="stack-stars">⭐⭐⭐⭐⭐</div>
+        <div class="tool-use" style="font-size:11px;">💬 待填充：用它做过什么？</div>
       </a>
-
-      <!-- Gemini -->
-      <a class="stack-card" href="https://gemini.google.com" target="_blank" style="border-color: rgba(37,99,235,0.15);">
-        <div class="stack-card-top">
-          <div class="stack-icon icon-blue">✨</div>
-          <div class="stack-name">Gemini</div>
+      <a class="stack-card" href="https://gemini.google.com" target="_blank" style="border-color:rgba(37,99,235,0.15);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+          <div class="tool-icon icon-blue" style="width:32px;height:32px;">✨</div>
+          <div>
+            <div class="tool-name">Gemini</div>
+            <div class="tool-stars">⭐⭐⭐⭐⭐</div>
+          </div>
         </div>
-        <div class="stack-use" style="font-size:11px; color:var(--text-2);">💬 待填充：你在Gemini里用过哪些功能？</div>
-        <div class="stack-stars">⭐⭐⭐⭐⭐</div>
+        <div class="tool-use" style="font-size:11px;">💬 待填充：用它做过什么？</div>
       </a>
-
-      <!-- 豆包 -->
-      <a class="stack-card" href="https://www.doubao.com" target="_blank" style="border-color: rgba(217,119,6,0.15);">
-        <div class="stack-card-top">
-          <div class="stack-icon icon-orange">🫛</div>
-          <div class="stack-name">豆包</div>
+      <a class="stack-card" href="https://www.doubao.com" target="_blank" style="border-color:rgba(217,119,6,0.15);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+          <div class="tool-icon icon-orange" style="width:32px;height:32px;">🫛</div>
+          <div>
+            <div class="tool-name">豆包</div>
+            <div class="tool-stars">⭐⭐⭐⭐⭐</div>
+          </div>
         </div>
-        <div class="stack-use" style="font-size:11px; color:var(--text-2);">💬 待填充：你在豆包里做过什么内容？</div>
-        <div class="stack-stars">⭐⭐⭐⭐⭐</div>
+        <div class="tool-use" style="font-size:11px;">💬 待填充：用它做过什么？</div>
       </a>
-
-      <!-- 智谱 -->
-      <a class="stack-card" href="https://www.zhipuai.cn" target="_blank" style="border-color: rgba(5,150,105,0.15);">
-        <div class="stack-card-top">
-          <div class="stack-icon icon-green">📊</div>
-          <div class="stack-name">智谱 GLM</div>
+      <a class="stack-card" href="https://www.zhipuai.cn" target="_blank" style="border-color:rgba(5,150,105,0.15);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+          <div class="tool-icon icon-green" style="width:32px;height:32px;">📊</div>
+          <div>
+            <div class="tool-name">智谱 GLM</div>
+            <div class="tool-stars">⭐⭐⭐⭐⭐</div>
+          </div>
         </div>
-        <div class="stack-use" style="font-size:11px; color:var(--text-2);">💬 待填充：你在智谱里做过什么？</div>
-        <div class="stack-stars">⭐⭐⭐⭐⭐</div>
+        <div class="tool-use" style="font-size:11px;">💬 待填充：用它做过什么？</div>
       </a>
-
-      <!-- 即梦 -->
-      <a class="stack-card" href="https://jimeng.jianying.com" target="_blank" style="border-color: rgba(236,72,153,0.15);">
-        <div class="stack-card-top">
-          <div class="stack-icon icon-pink">🎨</div>
-          <div class="stack-name">即梦</div>
+      <a class="stack-card" href="https://jimeng.jianying.com" target="_blank" style="border-color:rgba(236,72,153,0.15);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+          <div class="tool-icon icon-pink" style="width:32px;height:32px;">🎨</div>
+          <div>
+            <div class="tool-name">即梦</div>
+            <div class="tool-stars">⭐⭐⭐⭐⭐</div>
+          </div>
         </div>
-        <div class="stack-use" style="font-size:11px; color:var(--text-2);">💬 待填充：你在即梦里生成过什么图片/视频？</div>
-        <div class="stack-stars">⭐⭐⭐⭐⭐</div>
+        <div class="tool-use" style="font-size:11px;">💬 待填充：用它做过什么？</div>
       </a>
-
-      <!-- 可灵 -->
-      <a class="stack-card" href="https://klingai.com" target="_blank" style="border-color: rgba(236,72,153,0.15);">
-        <div class="stack-card-top">
-          <div class="stack-icon icon-pink">🐉</div>
-          <div class="stack-name">可灵 AI</div>
+      <a class="stack-card" href="https://klingai.com" target="_blank" style="border-color:rgba(236,72,153,0.15);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+          <div class="tool-icon icon-pink" style="width:32px;height:32px;">🐉</div>
+          <div>
+            <div class="tool-name">可灵 AI</div>
+            <div class="tool-stars">⭐⭐⭐⭐⭐</div>
+          </div>
         </div>
-        <div class="stack-use" style="font-size:11px; color:var(--text-2);">💬 待填充：你在可灵里做过什么视频？</div>
-        <div class="stack-stars">⭐⭐⭐⭐⭐</div>
+        <div class="tool-use" style="font-size:11px;">💬 待填充：用它做过什么？</div>
       </a>
-
-      <!-- Nano Banana -->
-      <a class="stack-card" href="https://gemini.google.com" target="_blank" style="border-color: rgba(8,145,178,0.15);">
-        <div class="stack-card-top">
-          <div class="stack-icon icon-cyan">🍌</div>
-          <div class="stack-name">Nano Banana</div>
+      <a class="stack-card" href="https://gemini.google.com" target="_blank" style="border-color:rgba(8,145,178,0.15);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+          <div class="tool-icon icon-cyan" style="width:32px;height:32px;">🍌</div>
+          <div>
+            <div class="tool-name">Nano Banana</div>
+            <div class="tool-stars">⭐⭐⭐⭐⭐</div>
+          </div>
         </div>
-        <div class="stack-use" style="font-size:11px; color:var(--text-2);">💬 待填充：你在Nano Banana里生成过什么？</div>
-        <div class="stack-stars">⭐⭐⭐⭐⭐</div>
+        <div class="tool-use" style="font-size:11px;">💬 待填充：用它做过什么？</div>
       </a>
-
-      <!-- Midjourney -->
-      <a class="stack-card" href="https://midjourney.com" target="_blank" style="border-color: rgba(217,119,6,0.15);">
-        <div class="stack-card-top">
-          <div class="stack-icon icon-orange">🎨</div>
-          <div class="stack-name">Midjourney</div>
+      <a class="stack-card" href="https://midjourney.com" target="_blank" style="border-color:rgba(217,119,6,0.15);">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+          <div class="tool-icon icon-orange" style="width:32px;height:32px;">🎨</div>
+          <div>
+            <div class="tool-name">Midjourney</div>
+            <div class="tool-stars">⭐⭐⭐⭐⭐</div>
+          </div>
         </div>
-        <div class="stack-use" style="font-size:11px; color:var(--text-2);">💬 待填充：你在Midjourney里生成过什么图？</div>
-        <div class="stack-stars">⭐⭐⭐⭐⭐</div>
+        <div class="tool-use" style="font-size:11px;">💬 待填充：用它做过什么？</div>
       </a>
     </div>
   </section>
 
   <!-- AI对话助手 -->
-  <div class="section-title">
-    <span class="emoji">🤖</span>
-    <span class="label">AI对话助手</span>
-    <span class="count">6个</span>
-  </div>
+  <div class="section-title"><span class="emoji">🤖</span><span class="label">AI对话助手</span><span class="count">5个</span></div>
   <div class="tool-grid">
     <a class="tool-card" href="https://chat.openai.com" target="_blank">
       <div class="tool-icon icon-purple">🤖</div>
-      <div class="tool-content">
-        <div class="tool-name">ChatGPT</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">ChatGPT</span></div>
+          <span class="price-tag price-freemium">免费+</span>
+        </div>
         <div class="tool-desc">OpenAI出品，全球最流行AI对话工具，支持多模态</div>
-        <div class="tool-stars" style="font-size:11px;color:#d97706;margin-top:4px;">⭐⭐⭐⭐⭐</div>
+        <div class="tool-stars">⭐⭐⭐⭐⭐</div>
       </div>
     </a>
     <a class="tool-card" href="https://claude.ai" target="_blank">
       <div class="tool-icon icon-purple">🧠</div>
-      <div class="tool-content">
-        <div class="tool-name">Claude</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">Claude</span></div>
+          <span class="price-tag price-freemium">免费+</span>
+        </div>
         <div class="tool-desc">Anthropic出品，长文本理解强，适合写作和深度分析</div>
-        <div class="tool-stars" style="font-size:11px;color:#d97706;margin-top:4px;">⭐⭐⭐⭐⭐</div>
+        <div class="tool-stars">⭐⭐⭐⭐⭐</div>
       </div>
     </a>
     <a class="tool-card" href="https://gemini.google.com" target="_blank">
-      <div class="tool-icon icon-purple">✨</div>
-      <div class="tool-content">
-        <div class="tool-name">Gemini</div>
+      <div class="tool-icon icon-blue">✨</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">Gemini</span></div>
+          <span class="price-tag price-free">免费</span>
+        </div>
         <div class="tool-desc">Google出品，免费100万token上下文，联网能力强</div>
-        <div class="tool-stars" style="font-size:11px;color:#d97706;margin-top:4px;">⭐⭐⭐⭐⭐</div>
+        <div class="tool-stars">⭐⭐⭐⭐⭐</div>
       </div>
     </a>
     <a class="tool-card" href="https://www.perplexity.ai" target="_blank">
       <div class="tool-icon icon-blue">🔍</div>
-      <div class="tool-content">
-        <div class="tool-name">Perplexity</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">Perplexity</span></div>
+          <span class="price-tag price-freemium">免费+</span>
+        </div>
         <div class="tool-desc">AI搜索引擎，实时联网查资料，回答带来源链接</div>
-        <div class="tool-stars" style="font-size:11px;color:#d97706;margin-top:4px;">⭐⭐⭐⭐</div>
+        <div class="tool-stars">⭐⭐⭐⭐</div>
       </div>
     </a>
+    <a class="tool-card" href="https://www.doubao.com" target="_blank">
+      <div class="tool-icon icon-orange">🫛</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">豆包</span></div>
+          <span class="price-tag price-free">免费</span>
+        </div>
+        <div class="tool-desc">字节AI助手，中文理解强，陪我做内容策划</div>
+        <div class="tool-stars">⭐⭐⭐⭐⭐</div>
+      </div>
+    </a>
+  </div>
+
+  <!-- AI编程 -->
+  <div class="section-title"><span class="emoji">💻</span><span class="label">AI编程工具</span><span class="count">4个</span></div>
+  <div class="tool-grid">
     <a class="tool-card" href="https://cursor.com" target="_blank">
-      <div class="tool-icon icon-blue">💻</div>
-      <div class="tool-content">
-        <div class="tool-name">Cursor</div>
+      <div class="tool-icon icon-purple">💻</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">Cursor</span></div>
+          <span class="price-tag price-freemium">免费+</span>
+        </div>
         <div class="tool-desc">AI代码编辑器，vibe coding神器，改代码直接说话</div>
-        <div class="tool-stars" style="font-size:11px;color:#d97706;margin-top:4px;">⭐⭐⭐⭐⭐</div>
+        <div class="tool-stars">⭐⭐⭐⭐⭐</div>
       </div>
     </a>
     <a class="tool-card" href="https://github.com/features/copilot" target="_blank">
       <div class="tool-icon icon-blue">⚡</div>
-      <div class="tool-content">
-        <div class="tool-name">Copilot</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">Copilot</span></div>
+          <span class="price-tag price-paid">$10/月</span>
+        </div>
         <div class="tool-desc">GitHub官方AI编程助手，VS Code里直接用</div>
-        <div class="tool-stars" style="font-size:11px;color:#d97706;margin-top:4px;">⭐⭐⭐⭐⭐</div>
+        <div class="tool-stars">⭐⭐⭐⭐⭐</div>
+      </div>
+    </a>
+    <a class="tool-card" href="https://claude.ai" target="_blank">
+      <div class="tool-icon icon-purple">🤖</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">Claude Code</span></div>
+          <span class="price-tag price-freemium">免费+</span>
+        </div>
+        <div class="tool-desc">终端里的AI编程助手，用自然语言写代码、自动化任务</div>
+        <div class="tool-stars">⭐⭐⭐⭐⭐</div>
+      </div>
+    </a>
+    <a class="tool-card" href="https://windsurf.com" target="_blank">
+      <div class="tool-icon icon-blue">🌊</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">Windsurf</span></div>
+          <span class="price-tag price-freemium">免费+</span>
+        </div>
+        <div class="tool-desc">Agentic IDE，多步代码任务自动完成</div>
+        <div class="tool-stars">⭐⭐⭐⭐</div>
       </div>
     </a>
   </div>
 
   <!-- AI网站构建 -->
-  <div class="section-title">
-    <span class="emoji">🌐</span>
-    <span class="label">AI网站与应用构建</span>
-    <span class="count">6个</span>
-  </div>
+  <div class="section-title"><span class="emoji">🌐</span><span class="label">AI网站与应用构建</span><span class="count">5个</span></div>
   <div class="tool-grid">
     <a class="tool-card" href="https://bolt.new" target="_blank">
       <div class="tool-icon icon-blue">⚡</div>
-      <div class="tool-content">
-        <div class="tool-name">Bolt.new</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">Bolt.new</span></div>
+          <span class="price-tag price-free">免费</span>
+        </div>
         <div class="tool-desc">浏览器里喊句话就能出完整项目，可直接部署</div>
+        <div class="tool-stars">⭐⭐⭐⭐</div>
       </div>
     </a>
     <a class="tool-card" href="https://v0.dev" target="_blank">
       <div class="tool-icon icon-blue">🎯</div>
-      <div class="tool-content">
-        <div class="tool-name">v0</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">v0</span></div>
+          <span class="price-tag price-freemium">免费+</span>
+        </div>
         <div class="tool-desc">Vercel出品，AI生成Next.js界面，UI质量高</div>
+        <div class="tool-stars">⭐⭐⭐⭐</div>
       </div>
     </a>
     <a class="tool-card" href="https://lovable.dev" target="_blank">
       <div class="tool-icon icon-blue">💛</div>
-      <div class="tool-content">
-        <div class="tool-name">Lovable</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">Lovable</span></div>
+          <span class="price-tag price-freemium">免费+</span>
+        </div>
         <div class="tool-desc">Idea到App几秒完成，全栈工程师级别输出</div>
-      </div>
-    </a>
-    <a class="tool-card" href="https://windsurf.com" target="_blank">
-      <div class="tool-icon icon-blue">🌊</div>
-      <div class="tool-content">
-        <div class="tool-name">Windsurf</div>
-        <div class="tool-desc">Agentic IDE，多步代码任务自动完成</div>
+        <div class="tool-stars">⭐⭐⭐⭐</div>
       </div>
     </a>
     <a class="tool-card" href="https://replit.com" target="_blank">
       <div class="tool-icon icon-blue">🚀</div>
-      <div class="tool-content">
-        <div class="tool-name">Replit</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">Replit</span></div>
+          <span class="price-tag price-freemium">免费+</span>
+        </div>
         <div class="tool-desc">浏览器里写代码/跑项目/部署，全流程覆盖</div>
+        <div class="tool-stars">⭐⭐⭐⭐</div>
       </div>
     </a>
     <a class="tool-card" href="https://www.notion.so" target="_blank">
       <div class="tool-icon icon-purple">📝</div>
-      <div class="tool-content">
-        <div class="tool-name">Notion</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">Notion</span></div>
+          <span class="price-tag price-freemium">免费+</span>
+        </div>
         <div class="tool-desc">笔记+AI+数据库，知识管理一体化</div>
+        <div class="tool-stars">⭐⭐⭐⭐⭐</div>
       </div>
     </a>
   </div>
 
   <!-- AI视频 -->
-  <div class="section-title">
-    <span class="emoji">🎬</span>
-    <span class="label">AI视频</span>
-    <span class="count">6个</span>
-  </div>
+  <div class="section-title"><span class="emoji">🎬</span><span class="label">AI视频</span><span class="count">6个</span></div>
   <div class="tool-grid">
     <a class="tool-card" href="https://runwayml.com" target="_blank">
       <div class="tool-icon icon-pink">🎥</div>
-      <div class="tool-content">
-        <div class="tool-name">Runway</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">Runway</span></div>
+          <span class="price-tag price-paid">$15/月</span>
+        </div>
         <div class="tool-desc">AI视频生成鼻祖，Gen-3效果惊艳，影视级输出</div>
+        <div class="tool-stars">⭐⭐⭐⭐⭐</div>
       </div>
     </a>
     <a class="tool-card" href="https://pika.art" target="_blank">
       <div class="tool-icon icon-pink">🎬</div>
-      <div class="tool-content">
-        <div class="tool-name">Pika</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">Pika</span></div>
+          <span class="price-tag price-freemium">免费+</span>
+        </div>
         <div class="tool-desc">文字转视频新秀，操作简单，生成速度快</div>
+        <div class="tool-stars">⭐⭐⭐⭐</div>
       </div>
     </a>
     <a class="tool-card" href="https://klingai.com" target="_blank">
       <div class="tool-icon icon-pink">🐉</div>
-      <div class="tool-content">
-        <div class="tool-name">可灵 AI</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">可灵 AI</span></div>
+          <span class="price-tag price-freemium">免费+</span>
+        </div>
         <div class="tool-desc">快手出品，国产视频生成顶流，支持3D场景</div>
+        <div class="tool-stars">⭐⭐⭐⭐⭐</div>
       </div>
     </a>
     <a class="tool-card" href="https://hailuoai.video" target="_blank">
       <div class="tool-icon icon-pink">🌪️</div>
-      <div class="tool-content">
-        <div class="tool-name">海螺AI</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">海螺AI</span></div>
+          <span class="price-tag price-free">免费</span>
+        </div>
         <div class="tool-desc">字节跳动出品，画面质量高，国产视频AI新势力</div>
+        <div class="tool-stars">⭐⭐⭐⭐</div>
       </div>
     </a>
     <a class="tool-card" href="https://www.sora.com" target="_blank">
       <div class="tool-icon icon-pink">🌊</div>
-      <div class="tool-content">
-        <div class="tool-name">Sora</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">Sora</span></div>
+          <span class="price-tag price-paid">$20/月</span>
+        </div>
         <div class="tool-desc">OpenAI视频生成模型，文本转视频效果逼真</div>
+        <div class="tool-stars">⭐⭐⭐⭐⭐</div>
       </div>
     </a>
-    <a class="tool-card" href="https://visen.ai" target="_blank">
-      <div class="tool-icon icon-pink">🎞️</div>
-      <div class="tool-content">
-        <div class="tool-name">Viggle</div>
-        <div class="tool-desc">AI角色动画，让图片里的人动起来</div>
+    <a class="tool-card" href="https://jimeng.jianying.com" target="_blank">
+      <div class="tool-icon icon-pink">🎨</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">即梦</span></div>
+          <span class="price-tag price-free">免费</span>
+        </div>
+        <div class="tool-desc">字节出品，AI图片+视频生成，抖音体系深度集成</div>
+        <div class="tool-stars">⭐⭐⭐⭐⭐</div>
       </div>
     </a>
   </div>
 
   <!-- AI图片 -->
-  <div class="section-title">
-    <span class="emoji">🖼️</span>
-    <span class="label">AI图片</span>
-    <span class="count">6个</span>
-  </div>
+  <div class="section-title"><span class="emoji">🖼️</span><span class="label">AI图片</span><span class="count">6个</span></div>
   <div class="tool-grid">
     <a class="tool-card" href="https://midjourney.com" target="_blank">
       <div class="tool-icon icon-orange">🎨</div>
-      <div class="tool-content">
-        <div class="tool-name">Midjourney</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">Midjourney</span></div>
+          <span class="price-tag price-paid">$10/月</span>
+        </div>
         <div class="tool-desc">图片生成天花板，艺术感强，Discord里喊话出图</div>
+        <div class="tool-stars">⭐⭐⭐⭐⭐</div>
       </div>
     </a>
     <a class="tool-card" href="https://openai.com/index/dall-e-3" target="_blank">
       <div class="tool-icon icon-orange">🖌️</div>
-      <div class="tool-content">
-        <div class="tool-name">DALL·E 3</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">DALL·E 3</span></div>
+          <span class="price-tag price-freemium">免费+</span>
+        </div>
         <div class="tool-desc">OpenAI图片模型，理解指令强，ChatGPT里直接用</div>
+        <div class="tool-stars">⭐⭐⭐⭐⭐</div>
       </div>
     </a>
     <a class="tool-card" href="https://ideogram.ai" target="_blank">
       <div class="tool-icon icon-orange">✨</div>
-      <div class="tool-content">
-        <div class="tool-name">Ideogram</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">Ideogram</span></div>
+          <span class="price-tag price-freemium">免费+</span>
+        </div>
         <div class="tool-desc">文字生成图片神器，在图片里生成准确文字</div>
+        <div class="tool-stars">⭐⭐⭐⭐</div>
       </div>
     </a>
-    <a class="tool-card" href="https://www.recraft.ai" target="_blank">
-      <div class="tool-icon icon-orange">🎯</div>
-      <div class="tool-content">
-        <div class="tool-name">Recraft</div>
-        <div class="tool-desc">AI图片+矢量图，可生成SVG格式，设计友好</div>
+    <a class="tool-card" href="https://gemini.google.com" target="_blank">
+      <div class="tool-icon icon-cyan">🍌</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">Nano Banana</span></div>
+          <span class="price-tag price-free">免费</span>
+        </div>
+        <div class="tool-desc">Gemini内置AI绘图，Google最强图生模型，完全免费</div>
+        <div class="tool-stars">⭐⭐⭐⭐⭐</div>
       </div>
     </a>
     <a class="tool-card" href="https://tongyi.aliyun.com/wanxiangan" target="_blank">
       <div class="tool-icon icon-orange">🖼️</div>
-      <div class="tool-content">
-        <div class="tool-name">通义万相</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">通义万相</span></div>
+          <span class="price-tag price-free">免费</span>
+        </div>
         <div class="tool-desc">阿里出品，国产图片生成，支持中文提示词</div>
+        <div class="tool-stars">⭐⭐⭐⭐</div>
       </div>
     </a>
     <a class="tool-card" href="https://www.stable-diffusion.cc" target="_blank">
       <div class="tool-icon icon-orange">🌌</div>
-      <div class="tool-content">
-        <div class="tool-name">Stable Diffusion</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">Stable Diffusion</span></div>
+          <span class="price-tag price-free">免费</span>
+        </div>
         <div class="tool-desc">开源免费可本地跑，模型丰富，AI图片鼻祖</div>
+        <div class="tool-stars">⭐⭐⭐⭐</div>
       </div>
     </a>
   </div>
 
-  <!-- AI效率 -->
-  <div class="section-title">
-    <span class="emoji">⚡</span>
-    <span class="label">AI效率与自动化</span>
-    <span class="count">6个</span>
-  </div>
+  <!-- AI效率与自动化 -->
+  <div class="section-title"><span class="emoji">⚡</span><span class="label">AI效率与自动化</span><span class="count">5个</span></div>
   <div class="tool-grid">
     <a class="tool-card" href="https://n8n.io" target="_blank">
       <div class="tool-icon icon-cyan">🔗</div>
-      <div class="tool-content">
-        <div class="tool-name">n8n</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">n8n</span></div>
+          <span class="price-tag price-free">免费开源</span>
+        </div>
         <div class="tool-desc">开源工作流自动化，可自托管，高度可定制</div>
+        <div class="tool-stars">⭐⭐⭐⭐</div>
       </div>
     </a>
     <a class="tool-card" href="https://www.make.com" target="_blank">
       <div class="tool-icon icon-cyan">🔧</div>
-      <div class="tool-content">
-        <div class="tool-name">Make</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">Make</span></div>
+          <span class="price-tag price-freemium">免费+</span>
+        </div>
         <div class="tool-desc">可视化工作流自动化，比Zapier更灵活</div>
+        <div class="tool-stars">⭐⭐⭐⭐</div>
       </div>
     </a>
     <a class="tool-card" href="https://zapier.com" target="_blank">
       <div class="tool-icon icon-cyan">⚡</div>
-      <div class="tool-content">
-        <div class="tool-name">Zapier</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">Zapier</span></div>
+          <span class="price-tag price-freemium">免费+</span>
+        </div>
         <div class="tool-desc">无代码自动化，连8000+应用，让AI替你干活</div>
+        <div class="tool-stars">⭐⭐⭐⭐⭐</div>
       </div>
     </a>
     <a class="tool-card" href="https://www.raycast.com" target="_blank">
       <div class="tool-icon icon-blue">🚀</div>
-      <div class="tool-content">
-        <div class="tool-name">Raycast</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">Raycast</span></div>
+          <span class="price-tag price-freemium">免费+</span>
+        </div>
         <div class="tool-desc">Mac最强效率工具，AI加持后堪称终极启动器</div>
-      </div>
-    </a>
-    <a class="tool-card" href="https://openinterpreter.com" target="_blank">
-      <div class="tool-icon icon-blue">🖥️</div>
-      <div class="tool-content">
-        <div class="tool-name">Open Interpreter</div>
-        <div class="tool-desc">在终端里用AI控制电脑，自动化本地所有任务</div>
-      </div>
-    </a>
-    <a class="tool-card" href="https://www.jianying.com" target="_blank">
-      <div class="tool-icon icon-pink">🎬</div>
-      <div class="tool-content">
-        <div class="tool-name">剪映</div>
-        <div class="tool-desc">字节出品，AI脚本/配音/字幕，视频创作者必备</div>
-      </div>
-    </a>
-  </div>
-
-  <!-- AI写作 -->
-  <div class="section-title">
-    <span class="emoji">✍️</span>
-    <span class="label">AI写作与内容创作</span>
-    <span class="count">4个</span>
-  </div>
-  <div class="tool-grid">
-    <a class="tool-card" href="https://xiezuocat.com" target="_blank">
-      <div class="tool-icon icon-green">🐱</div>
-      <div class="tool-content">
-        <div class="tool-name">秘塔写作猫</div>
-        <div class="tool-desc">国产AI写作助手，纠错、改写、润色全搞定</div>
-      </div>
-    </a>
-    <a class="tool-card" href="https://iflyrec.com" target="_blank">
-      <div class="tool-icon icon-green">🎙️</div>
-      <div class="tool-content">
-        <div class="tool-name">讯飞语记</div>
-        <div class="tool-desc">语音转文字+AI改写，口播脚本神器</div>
-      </div>
-    </a>
-    <a class="tool-card" href="https://zenvideo.qq.com" target="_blank">
-      <div class="tool-icon icon-green">📄</div>
-      <div class="tool-content">
-        <div class="tool-name">腾讯智影</div>
-        <div class="tool-desc">腾讯出品，AI写稿/配音/数字人，一站式视频创作</div>
+        <div class="tool-stars">⭐⭐⭐⭐⭐</div>
       </div>
     </a>
     <a class="tool-card" href="https://www.coze.cn" target="_blank">
       <div class="tool-icon icon-purple">🤖</div>
-      <div class="tool-content">
-        <div class="tool-name">Coze</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">Coze扣子</span></div>
+          <span class="price-tag price-free">免费</span>
+        </div>
         <div class="tool-desc">字节出品，AI Bot开发平台，支持小红书/抖音发布</div>
+        <div class="tool-stars">⭐⭐⭐⭐⭐</div>
+      </div>
+    </a>
+  </div>
+
+  <!-- AI写作与视频 -->
+  <div class="section-title"><span class="emoji">✍️</span><span class="label">AI写作与内容创作</span><span class="count">5个</span></div>
+  <div class="tool-grid">
+    <a class="tool-card" href="https://xiezuocat.com" target="_blank">
+      <div class="tool-icon icon-green">🐱</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">秘塔写作猫</span></div>
+          <span class="price-tag price-freemium">免费+</span>
+        </div>
+        <div class="tool-desc">国产AI写作助手，纠错、改写、润色全搞定</div>
+        <div class="tool-stars">⭐⭐⭐⭐</div>
+      </div>
+    </a>
+    <a class="tool-card" href="https://iflyrec.com" target="_blank">
+      <div class="tool-icon icon-green">🎙️</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">讯飞语记</span></div>
+          <span class="price-tag price-freemium">免费+</span>
+        </div>
+        <div class="tool-desc">语音转文字+AI改写，口播脚本神器</div>
+        <div class="tool-stars">⭐⭐⭐⭐</div>
+      </div>
+    </a>
+    <a class="tool-card" href="https://zenvideo.qq.com" target="_blank">
+      <div class="tool-icon icon-green">📄</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">腾讯智影</span></div>
+          <span class="price-tag price-freemium">免费+</span>
+        </div>
+        <div class="tool-desc">腾讯出品，AI写稿/配音/数字人，一站式视频创作</div>
+        <div class="tool-stars">⭐⭐⭐⭐</div>
+      </div>
+    </a>
+    <a class="tool-card" href="https://www.jianying.com" target="_blank">
+      <div class="tool-icon icon-pink">🎬</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">剪映</span></div>
+          <span class="price-tag price-freemium">免费+</span>
+        </div>
+        <div class="tool-desc">字节出品，AI脚本/配音/字幕，视频创作者必备</div>
+        <div class="tool-stars">⭐⭐⭐⭐⭐</div>
+      </div>
+    </a>
+    <a class="tool-card" href="https://www.zhipuai.cn" target="_blank">
+      <div class="tool-icon icon-green">📊</div>
+      <div class="tool-body">
+        <div class="tool-top">
+          <div class="tool-name-row"><span class="tool-name">智谱 GLM</span></div>
+          <span class="price-tag price-free">免费</span>
+        </div>
+        <div class="tool-desc">国产大模型，对话/图片/Agent全能力，中文优化</div>
+        <div class="tool-stars">⭐⭐⭐⭐⭐</div>
       </div>
     </a>
   </div>
@@ -951,17 +849,10 @@
   <!-- CTA -->
   <div class="cta-section">
     <p>用AI放大你的能力，用工具放大你的效率</p>
-    <a href="https://xhslink.com/m/15zyxo67w0J" target="_blank">
-      📕 关注清溪小某书
-    </a>
+    <a href="https://xhslink.com/m/15zyxo67w0J" target="_blank">📕 关注清溪小某书</a>
   </div>
 
-  <footer>
-    © 2026 清溪的AI工具箱 ·
-    <a href="https://qingxi-ai-toolbox.vercel.app" target="_blank">qingxi-ai-toolbox.vercel.app</a>
-  </footer>
-
+  <footer>© 2026 清溪的AI工具箱 · <a href="https://qingxi-ai-toolbox.vercel.app" target="_blank">qingxi-ai-toolbox.vercel.app</a></footer>
 </div>
-
 </body>
 </html>
